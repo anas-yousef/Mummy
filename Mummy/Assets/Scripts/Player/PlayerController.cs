@@ -10,13 +10,37 @@ public class PlayerController : MonoBehaviour
     
     void Start()
     {
-        speed = 10f;
+        speed = 5f;
     }
 
 
     void Update()
     {
         horizontalMove = Input.GetAxisRaw("Horizontal") * speed * Time.deltaTime;
-        animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            Vector3 newScale = transform.localScale;
+            if (newScale.x > 0)
+            {
+                newScale.x *= -1;
+                transform.localScale = newScale;
+            }
+            animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
+            transform.position = new Vector3(transform.position.x + horizontalMove, transform.position.y, transform.position.z);
+        }
+
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            Vector3 newScale = transform.localScale;
+            if (newScale.x < 0)
+            {
+                newScale.x *= -1;
+                transform.localScale = newScale;
+            }
+            animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
+            transform.position = new Vector3(transform.position.x + horizontalMove, transform.position.y, transform.position.z);
+        }
+
+        
     }
 }
