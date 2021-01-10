@@ -202,7 +202,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 160948294}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.45, y: 1.04, z: 0}
+  m_LocalPosition: {x: -0.18, y: 2.19, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -220,7 +220,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 10
+  m_Mass: 1
   m_LinearDrag: 5
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -490,7 +490,7 @@ Transform:
   m_GameObject: {fileID: 857608376}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 6.19, y: -3.5, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0}
+  m_LocalScale: {x: -0.3, y: 0.3, z: 0}
   m_Children:
   - {fileID: 2086215019}
   m_Father: {fileID: 0}
@@ -536,7 +536,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: fe4a2d35f99b5224b9eddfafeed35cc0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 14a5a9cbca9941e4cb53a7f9a9257583, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -604,10 +604,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 100
+  m_Mass: 10
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 3
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -627,6 +627,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   animator: {fileID: 857608379}
+  rigidbody2d: {fileID: 857608381}
+  boxCollider2d: {fileID: 857608380}
+  platformsLayerMask:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!114 &857608383
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -642,7 +647,7 @@ MonoBehaviour:
   toiletPaper: {fileID: 2086215020}
   toiletLine: {fileID: 857608384}
   jointLine: {fileID: 857608386}
-  seconds: 0.5
+  seconds: 2
 --- !u!120 &857608384
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -772,7 +777,7 @@ GameObject:
   - component: {fileID: 1008346535}
   - component: {fileID: 1008346534}
   - component: {fileID: 1008346536}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -927,7 +932,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c4f1c108d077f704fb4e1129b505eb99, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d089875e703b9ea45aaf4678eaa3eabf, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1039,7 +1044,7 @@ Transform:
   m_GameObject: {fileID: 2086215018}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.153, y: 0.128, z: 0}
-  m_LocalScale: {x: 0.09, y: 0.09, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 857608377}
   m_RootOrder: 0
@@ -1116,7 +1121,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: ea3c7ecbb5ed74a768f3265f41e296b0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 423f746e0d21c9846975e533f33c5945, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

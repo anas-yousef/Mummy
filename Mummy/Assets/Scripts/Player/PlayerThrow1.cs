@@ -56,6 +56,8 @@ public class PlayerThrow1 : MonoBehaviour
         jointLine.enabled = false;
         toiletLine.enabled = false;
         toiletPaper.gameObject.SetActive(true);
+        //
+
         target.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
         target = null;
     }
