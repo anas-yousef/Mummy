@@ -17,6 +17,9 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         horizontalMove = Input.GetAxisRaw("Horizontal") * speed * Time.deltaTime;
+
+
+
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             Vector3 newScale = transform.localScale;
@@ -25,7 +28,6 @@ public class PlayerController : MonoBehaviour
                 newScale.x *= -1;
                 transform.localScale = newScale;
             }
-            animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
             transform.position = new Vector3(transform.position.x + horizontalMove, transform.position.y, transform.position.z);
         }
 
@@ -37,10 +39,10 @@ public class PlayerController : MonoBehaviour
                 newScale.x *= -1;
                 transform.localScale = newScale;
             }
-            animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
             transform.position = new Vector3(transform.position.x + horizontalMove, transform.position.y, transform.position.z);
         }
+        animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
 
-        
+
     }
 }
