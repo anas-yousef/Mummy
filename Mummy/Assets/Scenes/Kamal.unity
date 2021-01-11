@@ -1177,6 +1177,7 @@ MonoBehaviour:
   distance: 8.47
   toiletPaper: {fileID: 2086215019}
   playerScript: {fileID: 857608383}
+  playerPos: {fileID: 857608377}
 --- !u!58 &2086215021
 CircleCollider2D:
   m_ObjectHideFlags: 0

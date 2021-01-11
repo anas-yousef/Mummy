@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
         horizontalMove = Input.GetAxisRaw("Horizontal") * speed * Time.deltaTime;
         isGrounded = CheckIsGrounded();
 
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.LeftArrow) && isGrounded)
         {
             Vector3 newScale = transform.localScale;
             if (newScale.x > 0)
@@ -40,10 +40,13 @@ public class PlayerController : MonoBehaviour
                 newScale.x *= -1;
                 transform.localScale = newScale;
             }
-            transform.position = new Vector3(transform.position.x + horizontalMove, transform.position.y, transform.position.z);
+            
+            rigidbody2d.velocity = new Vector2(horizontalMove * 100, rigidbody2d.velocity.y);
+
+            //transform.position = new Vector3(transform.position.x + horizontalMove, transform.position.y, transform.position.z);
         }
 
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.RightArrow) && isGrounded)
         {
             Vector3 newScale = transform.localScale;
             if (newScale.x < 0)
@@ -51,7 +54,8 @@ public class PlayerController : MonoBehaviour
                 newScale.x *= -1;
                 transform.localScale = newScale;
             }
-            transform.position = new Vector3(transform.position.x + horizontalMove, transform.position.y, transform.position.z);
+            rigidbody2d.velocity = new Vector2(horizontalMove * 100, rigidbody2d.velocity.y);
+            //transform.position = new Vector3(transform.position.x + horizontalMove, transform.position.y, transform.position.z);
         }
 
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
