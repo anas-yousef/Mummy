@@ -59,12 +59,10 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("IsFalling", false);
             isJumping = true;
             isFalling = false;
-            //CalculateJumpLine();
         }
 
         if (rigidbody2d.velocity.y < -0.1)
         {
-            //debug.log("falling");
             isJumping = false;
             isFalling = true;
             animator.SetBool("IsFalling", true);
@@ -77,7 +75,6 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("IsJumping", false);
             isFalling = false;
             isJumping = false;
-            //animator.SetBool("IsJumping", false);
         }
 
 
@@ -90,15 +87,4 @@ public class PlayerController : MonoBehaviour
         return raycastHit2d.collider != null;
     }
 
-    void CalculateJumpLine()
-    {
-        float g = rigidbody2d.gravityScale * Physics2D.gravity.magnitude;
-        float v0 = 100 / rigidbody2d.mass; // converts the jumpForce to an initial velocity
-        float maxJump_y = transform.position.y + (v0 * v0) / (2 * g);
-        //Debug.Log(maxJump_y);
-
-        // For Debug.DrawLine in FixedUpdate :
-        //lineStart = new Vector3(-100, maxJump_y, 0);
-        //lineEnd = new Vector3(100, maxJump_y, 0);
-    }
 }
