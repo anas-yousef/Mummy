@@ -7,6 +7,8 @@ TagManager:
   - ToiletPaper
   - Box
   - Floor
+  - Water
+  - Exit
   layers:
   - Default
   - TransparentFX

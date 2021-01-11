@@ -1,9 +1,13 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+
+    public GameManager gm;
+    
     [SerializeField] private float speed;
     [SerializeField] private Animator animator;
     [SerializeField] private Rigidbody2D rigidbody2d;
@@ -76,9 +80,6 @@ public class PlayerController : MonoBehaviour
             isFalling = false;
             isJumping = false;
         }
-
-
-
     }
 
     private bool CheckIsGrounded()
@@ -87,4 +88,29 @@ public class PlayerController : MonoBehaviour
         return raycastHit2d.collider != null;
     }
 
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.tag.Equals("Water"))
+        {
+            Debug.Log("Hit the water");
+            
+            // Restart level. 
+            gm.RestartLevel();
+        }
+    }
+
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag.Equals("Exit"))
+        {
+            gm.SwitchLevel();
+        }
+    }
+
+    public void StopMovement()
+    {
+        rigidbody2d.velocity = new Vector2(0, 0);
+    }
+    
 }
