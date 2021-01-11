@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded;
     private bool isJumping;
     private bool isFalling;
+    private bool isMoving;
+    private bool canMove;
     
     void Start()
     {
@@ -24,6 +26,7 @@ public class PlayerController : MonoBehaviour
         isGrounded = true;
         isJumping = false;
         isFalling = false;
+        canMove = true;
     }
 
 
@@ -32,8 +35,10 @@ public class PlayerController : MonoBehaviour
         horizontalMove = Input.GetAxisRaw("Horizontal") * speed * Time.deltaTime;
         isGrounded = CheckIsGrounded();
 
-        if (Input.GetKey(KeyCode.LeftArrow) && isGrounded)
+        if (Input.GetKey(KeyCode.LeftArrow) && canMove)
         {
+            Debug.Log(canMove);
+            isMoving = true;
             Vector3 newScale = transform.localScale;
             if (newScale.x > 0)
             {
@@ -41,26 +46,40 @@ public class PlayerController : MonoBehaviour
                 transform.localScale = newScale;
             }
             
-            rigidbody2d.velocity = new Vector2(horizontalMove * 100, rigidbody2d.velocity.y);
-
-            //transform.position = new Vector3(transform.position.x + horizontalMove, transform.position.y, transform.position.z);
+            //rigidbody2d.velocity = new Vector2(horizontalMove * 100, rigidbody2d.velocity.y);
+            if(isMoving)
+            {
+                //Vector3.MoveTowards()
+                transform.position = new Vector3(transform.position.x + horizontalMove, transform.position.y, transform.position.z);
+            }
+            
         }
 
-        if (Input.GetKey(KeyCode.RightArrow) && isGrounded)
+        if (Input.GetKey(KeyCode.RightArrow) && canMove)
         {
+            isMoving = true;
             Vector3 newScale = transform.localScale;
             if (newScale.x < 0)
             {
                 newScale.x *= -1;
                 transform.localScale = newScale;
             }
-            rigidbody2d.velocity = new Vector2(horizontalMove * 100, rigidbody2d.velocity.y);
-            //transform.position = new Vector3(transform.position.x + horizontalMove, transform.position.y, transform.position.z);
+            //rigidbody2d.velocity = new Vector2(horizontalMove * 100, rigidbody2d.velocity.y);
+            if (isMoving)
+            {
+                transform.position = new Vector3(transform.position.x + horizontalMove, transform.position.y, transform.position.z);
+            }
+            
+        }
+
+        if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow))
+        {
+            isMoving = false;
         }
 
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
 
-        if (isGrounded && Input.GetKeyDown(KeyCode.UpArrow))
+        if (isGrounded && Input.GetKeyDown(KeyCode.UpArrow) && canMove)
         {
             rigidbody2d.AddForce(transform.up * 100, ForceMode2D.Impulse);
             animator.SetBool("IsJumping", true);
@@ -115,6 +134,16 @@ public class PlayerController : MonoBehaviour
     public void StopMovement()
     {
         rigidbody2d.velocity = new Vector2(0, 0);
+    }
+
+    public void SetCanMove(bool set)
+    {
+        canMove = set;
+    }
+
+    public bool GetCanMove()
+    {
+        return canMove;
     }
     
 }

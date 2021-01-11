@@ -628,6 +628,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 664cb800ab3a9ee47b948c3f59cd083b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gm: {fileID: 0}
   speed: 3
   animator: {fileID: 857608379}
   rigidbody2d: {fileID: 857608381}
@@ -651,6 +652,7 @@ MonoBehaviour:
   toiletLine: {fileID: 857608384}
   jointLine: {fileID: 857608386}
   seconds: 2
+  script: {fileID: 857608382}
 --- !u!120 &857608384
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -1177,6 +1179,8 @@ MonoBehaviour:
   distance: 8.47
   toiletPaper: {fileID: 2086215019}
   playerScript: {fileID: 857608383}
+  playerPos: {fileID: 857608377}
+  script: {fileID: 857608382}
 --- !u!58 &2086215021
 CircleCollider2D:
   m_ObjectHideFlags: 0
