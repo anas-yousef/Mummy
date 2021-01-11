@@ -11,10 +11,18 @@ public class PlayerThrow1 : MonoBehaviour
     [SerializeField] private LineRenderer toiletLine;
     [SerializeField] private SpringJoint2D jointLine;
     [SerializeField] private float seconds;
-
-
     private GameObject target;
-    
+    private bool isPaperMoving;
+
+
+
+    enum CollidedObject{
+        DraggableBox,
+        Floor,
+        SwingableBox
+    }
+
+
     private void Start()
     {
         toiletPaper.gameObject.SetActive(false);
@@ -35,23 +43,21 @@ public class PlayerThrow1 : MonoBehaviour
         }
     }
 
-    public void TargetHit(GameObject hit)
-    {
-        target = hit;
-        target.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-        toiletLine.enabled = true;
-        jointLine.enabled = true;
-        jointLine.connectedBody = target.GetComponent<Rigidbody2D>();
-        toiletPaper.gameObject.SetActive(false);
-        StartCoroutine(ReleaseAfterSeconds());
 
-    }
-    private IEnumerator ReleaseAfterSeconds()
+    private IEnumerator ReleaseAfterSeconds(CollidedObject collidedObject)
     {
         yield return new WaitForSeconds(seconds);
-        Release();
+        if (collidedObject.Equals(CollidedObject.DraggableBox))
+        {
+            DraggableBoxRelease();
+        }
+        if (collidedObject.Equals(CollidedObject.Floor))
+        {
+            ReleaseFloor();
+        }
+
     }
-    public void Release()
+    public void DraggableBoxRelease()
     {
         jointLine.enabled = false;
         toiletLine.enabled = false;
@@ -61,4 +67,28 @@ public class PlayerThrow1 : MonoBehaviour
         target.GetComponent<Rigidbody2D>().mass =1000;
         target = null;
     }
+    public void ReleaseFloor()
+    {
+        toiletPaper.gameObject.SetActive(true);
+    }
+    public void DraggableBoxHit(GameObject hit)
+    {
+        target = hit;
+        toiletLine.enabled = true;
+        jointLine.enabled = true;
+        jointLine.connectedBody = target.GetComponent<Rigidbody2D>();
+        toiletPaper.gameObject.SetActive(false);
+        StartCoroutine(ReleaseAfterSeconds(CollidedObject.DraggableBox));
+
+    }
+    public void WallHit(GameObject hit)
+    {
+        toiletPaper.gameObject.SetActive(false);
+        ReleaseFloor();
+    }
+    public void SetPaperMoving(bool isPaperMoving)
+    {
+        this.isPaperMoving = isPaperMoving;
+    }
+
 }

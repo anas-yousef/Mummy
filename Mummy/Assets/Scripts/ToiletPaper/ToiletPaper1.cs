@@ -7,15 +7,14 @@ public class ToiletPaper1 : MonoBehaviour
     [Header("Settings")]
     public float speed = 3f; // default speed 1 unit / second
     public float distance = 8f; // default distance 5 units
-    public Transform toiletPaper; // the object you want to throw (assign from the scene)
     private float _distance; // the distance it moves
     private bool _back; // is it coming back
-
-    //new
     [SerializeField] PlayerThrow1 playerScript; //player script
+    [SerializeField] private Transform playerPos;
     private bool _hit; //can get hit
     private Vector3 positionTrack;
-    [SerializeField] private Transform playerPos;
+    private bool ToiletPaperMoving;
+    
 
     public void Throw ()
     {
@@ -30,40 +29,49 @@ public class ToiletPaper1 : MonoBehaviour
         if (!_back)
         {
             positionTrack = transform.position;
-            // TODO need to add the option to throw 135 degrees. 
-            toiletPaper.Translate(new Vector3(1, 1, 0) * travel); // moves object
+            transform.Translate(new Vector3(1, 1, 0) * travel);
             _distance += Vector3.Distance(transform.position, positionTrack);
-            // update distance
-            _back = _distance >= distance || _hit; // goes back if distance reached
+            _back = _distance >= distance || _hit;
         }
         else
         {
             positionTrack = transform.position;
-            //toiletPaper.Translate(new Vector3(1, 1, 0) * -travel); // moves object
             transform.position = Vector3.MoveTowards(transform.position, playerPos.position, travel);
-            _distance -= Vector3.Distance(transform.position, positionTrack); // update distance;
-            enabled = _distance > 0.05; // turning off when done
+            _distance -= Vector3.Distance(transform.position, positionTrack);
+            enabled = _distance > 0.05;
             _hit = _distance > 0.05;
-            
+        }
+        if (_distance > 0.05)
+        {
+            playerScript.SetPaperMoving(true);
+            Debug.Log("Moving");
+        }
+        else
+        {
+            playerScript.SetPaperMoving(false);
+            Debug.Log("NotMoving");
         }
     }
- 
     private void OnEnable ()
     {
-       toiletPaper.gameObject.SetActive (true); // activating the object
-
+        gameObject.SetActive(true);
     }
     private void OnDisable ()
     {
-        toiletPaper.gameObject.SetActive (false);
+        gameObject.SetActive (false);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Box" && !_hit)
+        if (collision.gameObject.tag == "DraggableBox" && !_hit)
         {
-            collision.gameObject.GetComponent<Rigidbody2D>().mass =1;
             _hit = true;
-            playerScript.TargetHit(collision.gameObject);
+            collision.gameObject.GetComponent<Rigidbody2D>().mass =1;
+            playerScript.DraggableBoxHit(collision.gameObject);
+        }
+        if (collision.gameObject.layer == 10 && !_hit)
+        {
+            _hit = true;
+            playerScript.WallHit(collision.gameObject);
         }
     }
     public void SetDistance(float distance)

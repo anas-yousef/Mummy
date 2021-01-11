@@ -5,10 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - ToiletPaper
-  - Box
   - Floor
   - Water
   - Exit
+  - DraggableBox
   layers:
   - Default
   - TransparentFX
