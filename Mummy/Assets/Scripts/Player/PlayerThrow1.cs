@@ -58,7 +58,7 @@ public class PlayerThrow1 : MonoBehaviour
         toiletPaper.transform.position = target.transform.position;
         toiletPaper.gameObject.SetActive(true);
         toiletPaper.GetComponent<ToiletPaper1>().SetDistance(Vector3.Distance(transform.position, target.transform.position));
-        target.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+        target.GetComponent<Rigidbody2D>().mass =1000;
         target = null;
     }
 }

@@ -15,6 +15,7 @@ public class ToiletPaper1 : MonoBehaviour
     [SerializeField] PlayerThrow1 playerScript; //player script
     private bool _hit; //can get hit
     private Vector3 positionTrack;
+    [SerializeField] private Transform playerPos;
 
     public void Throw ()
     {
@@ -38,10 +39,11 @@ public class ToiletPaper1 : MonoBehaviour
         else
         {
             positionTrack = transform.position;
-            toiletPaper.Translate(new Vector3(1, 1, 0) * -travel); // moves object
+            //toiletPaper.Translate(new Vector3(1, 1, 0) * -travel); // moves object
+            transform.position = Vector3.MoveTowards(transform.position, playerPos.position, travel);
             _distance -= Vector3.Distance(transform.position, positionTrack); // update distance;
-            enabled = _distance > 0; // turning off when done
-            _hit = _distance > 0;
+            enabled = _distance > 0.05; // turning off when done
+            _hit = _distance > 0.05;
             
         }
     }
@@ -59,7 +61,7 @@ public class ToiletPaper1 : MonoBehaviour
     {
         if (collision.gameObject.tag == "Box" && !_hit)
         {
-            collision.gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+            collision.gameObject.GetComponent<Rigidbody2D>().mass =1;
             _hit = true;
             playerScript.TargetHit(collision.gameObject);
         }
