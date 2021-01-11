@@ -11,8 +11,10 @@ public class PlayerThrow1 : MonoBehaviour
     [SerializeField] private LineRenderer toiletLine;
     [SerializeField] private SpringJoint2D jointLine;
     [SerializeField] private float seconds;
+    [SerializeField] private PlayerController playerController;
     private GameObject target;
     private bool isPaperMoving;
+    
 
 
 
@@ -31,7 +33,7 @@ public class PlayerThrow1 : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Fire1") && !toiletPaper.gameObject.activeSelf && !jointLine.enabled) // if the toilet paper is not away 
+        if (Input.GetButtonDown("Fire1") && !toiletPaper.gameObject.activeSelf && !jointLine.enabled && !playerController.GetIsJumpingFalling()) // if the toilet paper is not away 
         {
             toiletPaper.Throw();
             toiletPaper.gameObject.SetActive(true);
@@ -89,6 +91,7 @@ public class PlayerThrow1 : MonoBehaviour
     public void SetPaperMoving(bool isPaperMoving)
     {
         this.isPaperMoving = isPaperMoving;
+        playerController.SetCanMove(!isPaperMoving);
     }
 
 }

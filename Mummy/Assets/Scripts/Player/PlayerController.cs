@@ -145,5 +145,10 @@ public class PlayerController : MonoBehaviour
     {
         return canMove;
     }
-    
+
+    public bool GetIsJumpingFalling()
+    {
+        return isJumping || isFalling;
+    }
+
 }
