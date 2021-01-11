@@ -10,6 +10,7 @@ public class PlayerThrow1 : MonoBehaviour
     public ToiletPaper1 toiletPaper;
     [SerializeField] private LineRenderer toiletLine;
     [SerializeField] private SpringJoint2D jointLine;
+    [SerializeField] private DraggableBoxScript draggableBoxScript;
     [SerializeField] private float seconds;
 
 
@@ -55,7 +56,9 @@ public class PlayerThrow1 : MonoBehaviour
     {
         jointLine.enabled = false;
         toiletLine.enabled = false;
+        toiletPaper.transform.position = target.transform.position;
         toiletPaper.gameObject.SetActive(true);
+        toiletPaper.GetComponent<ToiletPaper1>().SetDistance(Vector3.Distance(target.transform.position,transform.position));
         target.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
         target = null;
     }

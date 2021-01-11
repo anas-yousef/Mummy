@@ -202,7 +202,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 160948294}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.45, y: 1.04, z: 0}
+  m_LocalPosition: {x: 0.74, y: 1.26, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -220,7 +220,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 10
+  m_Mass: 1
   m_LinearDrag: 5
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -275,6 +275,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4991bf207ece6bd43bf8cc35a26bafcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  step: 0.008
+  player: {fileID: 857608377}
+  toiletPaper: {fileID: 2086215019}
 --- !u!1 &172314945
 GameObject:
   m_ObjectHideFlags: 0
@@ -604,7 +607,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 100
+  m_Mass: 10
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -642,6 +645,7 @@ MonoBehaviour:
   toiletPaper: {fileID: 2086215020}
   toiletLine: {fileID: 857608384}
   jointLine: {fileID: 857608386}
+  draggableBoxScript: {fileID: 160948299}
   seconds: 0.5
 --- !u!120 &857608384
 LineRenderer:
@@ -662,7 +666,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -759,7 +763,7 @@ SpringJoint2D:
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 0
   m_Distance: 1
-  m_DampingRatio: 0
+  m_DampingRatio: 0.83
   m_Frequency: 0.3
 --- !u!1 &1008346533
 GameObject:
@@ -927,7 +931,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c4f1c108d077f704fb4e1129b505eb99, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d089875e703b9ea45aaf4678eaa3eabf, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1039,7 +1043,7 @@ Transform:
   m_GameObject: {fileID: 2086215018}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.153, y: 0.128, z: 0}
-  m_LocalScale: {x: 0.09, y: 0.09, z: 1}
+  m_LocalScale: {x: 0.9, y: 0.9, z: 1}
   m_Children: []
   m_Father: {fileID: 857608377}
   m_RootOrder: 0
@@ -1116,7 +1120,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: ea3c7ecbb5ed74a768f3265f41e296b0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 423f746e0d21c9846975e533f33c5945, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

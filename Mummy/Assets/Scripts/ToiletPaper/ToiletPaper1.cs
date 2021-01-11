@@ -6,7 +6,7 @@ public class ToiletPaper1 : MonoBehaviour
 {
     [Header("Settings")]
     public float speed = 3f; // default speed 1 unit / second
-    public float distance = 5f; // default distance 5 units
+    public float distance = 8f; // default distance 5 units
     public Transform toiletPaper; // the object you want to throw (assign from the scene)
     private float _distance; // the distance it moves
     private bool _back; // is it coming back
@@ -14,6 +14,7 @@ public class ToiletPaper1 : MonoBehaviour
     //new
     [SerializeField] PlayerThrow1 playerScript; //player script
     private bool _hit; //can get hit
+    private Vector3 positionTrack;
 
     public void Throw ()
     {
@@ -27,16 +28,18 @@ public class ToiletPaper1 : MonoBehaviour
         float travel = Time.deltaTime * speed;
         if (!_back)
         {
+            positionTrack = transform.position;
             // TODO need to add the option to throw 135 degrees. 
-            
             toiletPaper.Translate(new Vector3(1, 1, 0) * travel); // moves object
-            _distance += travel; // update distance
+            _distance += Vector3.Distance(transform.position, positionTrack);
+            // update distance
             _back = _distance >= distance || _hit; // goes back if distance reached
         }
         else
         {
+            positionTrack = transform.position;
             toiletPaper.Translate(new Vector3(1, 1, 0) * -travel); // moves object
-            _distance -= travel; // update distance;
+            _distance -= Vector3.Distance(transform.position, positionTrack); // update distance;
             enabled = _distance > 0; // turning off when done
             _hit = _distance > 0;
             
@@ -60,6 +63,10 @@ public class ToiletPaper1 : MonoBehaviour
             _hit = true;
             playerScript.TargetHit(collision.gameObject);
         }
+    }
+    public void SetDistance(float distance)
+    {
+        _distance = distance;
     }
    
 }
