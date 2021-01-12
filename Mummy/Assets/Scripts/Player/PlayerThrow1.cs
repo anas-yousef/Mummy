@@ -10,10 +10,13 @@ public class PlayerThrow1 : MonoBehaviour
     public ToiletPaper1 toiletPaper;
     [SerializeField] private LineRenderer toiletLine;
     [SerializeField] private SpringJoint2D jointLine;
+    [SerializeField] private DistanceJoint2D distanceJoint;
     [SerializeField] private float seconds;
     [SerializeField] private PlayerController playerController;
+    private Vector3 positionBeforeSwing;
     private GameObject target;
     private bool isPaperMoving;
+    private bool isSwingnig;
     
 
 
@@ -43,6 +46,15 @@ public class PlayerThrow1 : MonoBehaviour
             toiletLine.SetPosition(0,transform.position);
             toiletLine.SetPosition(1, target.transform.position);
         }
+        if(distanceJoint.enabled && distanceJoint.distance > Vector3.Distance(positionBeforeSwing, target.transform.position) - 2f)
+        {
+            distanceJoint.distance -= 0.008f;
+        }
+        if(Input.GetButtonDown("Fire1") && isSwingnig)
+        {
+            SwingBoxRelease();
+        }
+
     }
 
 
@@ -73,6 +85,15 @@ public class PlayerThrow1 : MonoBehaviour
     {
         toiletPaper.gameObject.SetActive(true);
     }
+    public void SwingBoxRelease()
+    {
+        toiletPaper.transform.position = target.transform.position;
+        isSwingnig = false;
+        toiletPaper.gameObject.SetActive(true);
+        distanceJoint.enabled = false;
+        toiletLine.enabled = false;
+        target = null;
+    }
     public void DraggableBoxHit(GameObject hit)
     {
         target = hit;
@@ -82,6 +103,18 @@ public class PlayerThrow1 : MonoBehaviour
         toiletPaper.gameObject.SetActive(false);
         StartCoroutine(ReleaseAfterSeconds(CollidedObject.DraggableBox));
 
+    }
+    public void SwingBoxHit(GameObject hit)
+    {
+        positionBeforeSwing = transform.position;
+        isSwingnig = true;
+        target = hit;
+        toiletLine.enabled = true;
+        distanceJoint.enabled = true;
+        distanceJoint.connectedBody = target.GetComponent<Rigidbody2D>();
+        distanceJoint.distance = Vector3.Distance(transform.position, target.transform.position);
+        toiletPaper.gameObject.SetActive(false);
+        toiletLine.SetPosition(0, transform.position);
     }
     public void WallHit(GameObject hit)
     {
