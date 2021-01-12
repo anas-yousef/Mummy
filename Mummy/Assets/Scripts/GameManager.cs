@@ -10,9 +10,12 @@ public class GameManager : MonoBehaviour
     // todo need to update here every new level 
     public GameObject[] levels = new GameObject[2];
     public Transform[] playerStartLocation = new Transform[2];
-
+    public GameObject[] draggable = new GameObject[2];
+    
     private int _curLevel;
     private GameObject _curLevelMap;
+    private GameObject _curDraggables;
+
     
     [Header("Panels")] 
     public GameObject startPanel;
@@ -36,7 +39,6 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 0.0f;
             settingsPanel.SetActive(true);
         }
-
     }
 
     /**
@@ -44,14 +46,18 @@ public class GameManager : MonoBehaviour
      */
     public void PressStart()
     {
+        // Manage panels.
+        startPanel.SetActive(false);
+
         // Get first level.
         _curLevel = 0;
         _curLevelMap = Instantiate(levels[_curLevel]);
+        _curDraggables = Instantiate(draggable[_curLevel]);
+        player.transform.localPosition = new Vector3(playerStartLocation[_curLevel].position.x, 
+            playerStartLocation[_curLevel].position.y, 0);        
+        
         
         player.SetActive(true);
-        startPanel.SetActive(false);
-        player.transform.localPosition = new Vector3(playerStartLocation[_curLevel].position.x, 
-            playerStartLocation[_curLevel].position.y, 0);
     }
 
     /**
@@ -62,6 +68,7 @@ public class GameManager : MonoBehaviour
     {
         // Destroy current level.
         Destroy(_curLevelMap);
+        Destroy(_curDraggables);
         
         // No more levels. 
         if (_curLevel + 1 == levels.Length)
@@ -76,7 +83,8 @@ public class GameManager : MonoBehaviour
             _curLevel += 1;
             // Get the next level.
             _curLevelMap = Instantiate(levels[_curLevel]);
-        
+            _curDraggables = Instantiate(draggable[_curLevel]);
+
             // relocate the player
             player.transform.localPosition = new Vector3(playerStartLocation[_curLevel].position.x, 
                 playerStartLocation[_curLevel].position.y, 0);   
@@ -110,7 +118,8 @@ public class GameManager : MonoBehaviour
     {
         // Destrory current level. 
         Destroy(_curLevelMap);
-        
+        Destroy(_curDraggables);
+
         // Start time.
         Time.timeScale = 1.0f;
 
