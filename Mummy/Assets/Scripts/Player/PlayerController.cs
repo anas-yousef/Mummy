@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    void Update()
+    void FixedUpdate()
     {
         horizontalMove = Input.GetAxisRaw("Horizontal") * speed * Time.deltaTime;
         isGrounded = CheckIsGrounded();

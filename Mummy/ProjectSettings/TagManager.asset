@@ -9,6 +9,7 @@ TagManager:
   - Water
   - Exit
   - DraggableBox
+  - SwingBox
   layers:
   - Default
   - TransparentFX

@@ -79,6 +79,11 @@ public class ToiletPaper1 : MonoBehaviour
             _hit = true;
             playerScript.WallHit(collision.gameObject);
         }
+        if (collision.gameObject.tag == "SwingBox" && !_hit)
+        {
+            _hit = true;
+            playerScript.SwingBoxHit(collision.gameObject);
+        }
     }
     public void SetDistance(float distance)
     {
