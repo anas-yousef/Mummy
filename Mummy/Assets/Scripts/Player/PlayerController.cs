@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float jumpForce;
     [SerializeField] private float movementForce;
     private float horizontalMove = 0f;
+    private float horizontalMovePhysics = 0f;
     private bool isGrounded;
     private bool isJumping;
     private bool isFalling;
@@ -38,7 +39,6 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         horizontalMove = Input.GetAxisRaw("Horizontal") * speed * Time.deltaTime;
-        //horizontalMove = Input.GetAxisRaw("Horizontal") * speed;
         isGrounded = CheckIsGrounded();
 
         if (Input.GetKey(KeyCode.LeftArrow) && canMove)
@@ -52,10 +52,8 @@ public class PlayerController : MonoBehaviour
                 transform.localScale = newScale;
             }
             
-            //rigidbody2d.velocity = new Vector2(horizontalMove * 100, rigidbody2d.velocity.y);
             if(isMoving)
             {
-                //Vector3.MoveTowards()
                transform.position = new Vector3(transform.position.x + horizontalMove, transform.position.y, transform.position.z);
             }
             
@@ -70,7 +68,6 @@ public class PlayerController : MonoBehaviour
                 newScale.x *= -1;
                 transform.localScale = newScale;
             }
-            //rigidbody2d.velocity = new Vector2(horizontalMove * 100, rigidbody2d.velocity.y);
             if (isMoving)
             {
                 transform.position = new Vector3(transform.position.x + horizontalMove, transform.position.y, transform.position.z);
@@ -88,7 +85,7 @@ public class PlayerController : MonoBehaviour
         if (isGrounded && Input.GetKeyDown(KeyCode.UpArrow) && canMove)
         {
             pressJump = true;
-            rigidbody2d.AddForce(transform.up * 100, ForceMode2D.Impulse);
+            //rigidbody2d.AddForce(transform.up * 100, ForceMode2D.Impulse);
             animator.SetBool("IsJumping", true);
             animator.SetBool("IsFalling", false);
             isJumping = true;
@@ -112,28 +109,28 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    //private void FixedUpdate()
-    //{
-    //    if (pressJump)
-    //    {
-    //        rigidbody2d.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
-    //        pressJump = false;
-    //    }
-    //    if(isMoving)
-    //    {
-    //        Vector3 targetVelocity = new Vector2(horizontalMove * Time.fixedDeltaTime * movementForce, rigidbody2d.velocity.y);
-    //        // And then smoothing it out and applying it to the character
-    //        rigidbody2d.velocity = Vector3.SmoothDamp(rigidbody2d.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
-    //    }
-    //    if (!isMoving && !isFalling && !isJumping)
-    //    {
-    //        //rigidbody2d.velocity = Vector3.zero;
-    //    }
-       
+    private void FixedUpdate()
+    {
+        if (pressJump)
+        {
+            rigidbody2d.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
+            pressJump = false;
+        }
+        //    if(isMoving)
+        //    {
+        //        Vector3 targetVelocity = new Vector2(horizontalMovePhysics * Time.fixedDeltaTime * movementForce, rigidbody2d.velocity.y);
+        //        // And then smoothing it out and applying it to the character
+        //        rigidbody2d.velocity = Vector3.SmoothDamp(rigidbody2d.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
+        //    }
+        //    if (!isMoving && !isFalling && !isJumping)
+        //    {
+        //        //rigidbody2d.velocity = Vector3.zero;
+        //    }
 
-    //}
 
-    private bool CheckIsGrounded()
+    }
+
+private bool CheckIsGrounded()
     {
         RaycastHit2D raycastHit2d = Physics2D.BoxCast(boxCollider2d.bounds.center, boxCollider2d.bounds.size, 0f, Vector2.down, 0.1f, platformsLayerMask);
        
