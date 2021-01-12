@@ -103,7 +103,7 @@ public class GameManager : MonoBehaviour
         settingsPanel.SetActive(false);
         
         // relocate the player
-        player.transform.localPosition = new Vector3(playerStartLocation[_curLevel].position.x, 
+        player.transform.position = new Vector3(playerStartLocation[_curLevel].position.x, 
                                                      playerStartLocation[_curLevel].position.y, 0);
         
         // Stop it's movement. 

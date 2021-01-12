@@ -856,6 +856,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7624342948942997888, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7624342948942997916, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7624342948942997916, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7624342949113591556, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.19
@@ -928,10 +940,22 @@ PrefabInstance:
       propertyPath: m_Size.y
       value: 4.9973907
       objectReference: {fileID: 0}
+    - target: {fileID: 7624342949113591565, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}
+      propertyPath: distanceJoint
+      value: 
+      objectReference: {fileID: 621311206}
+    - target: {fileID: 7624342949113591566, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}
+      propertyPath: m_Frequency
+      value: 0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 7624342949113591567, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}
       propertyPath: m_SortingOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7624342949113591567, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 7624342949113591603, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}
       propertyPath: m_Name
       value: Player
@@ -954,6 +978,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 664cb800ab3a9ee47b948c3f59cd083b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!232 &621311206
+DistanceJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 621311196}
+  m_Enabled: 0
+  serializedVersion: 4
+  m_EnableCollision: 0
+  m_ConnectedRigidBody: {fileID: 0}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_AutoConfigureConnectedAnchor: 0
+  m_Anchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: 0, y: 0}
+  m_AutoConfigureDistance: 1
+  m_Distance: 7.115912
+  m_MaxDistanceOnly: 0
 --- !u!1 &753036285
 GameObject:
   m_ObjectHideFlags: 0
@@ -1915,7 +1958,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -1953,7 +1996,7 @@ MonoBehaviour:
   player: {fileID: 621311196}
   playerController: {fileID: 621311201}
   levels:
-  - {fileID: 8443342794192782907, guid: 6b1eca3c0faf040b5a3922eec00ac62c, type: 3}
+  - {fileID: 8443342794192782907, guid: 7a0e25eabf6122248b108211010869de, type: 3}
   - {fileID: 5847019159441803097, guid: fe26e5bcb9e424521be9f515a18183f9, type: 3}
   playerStartLocation:
   - {fileID: 8064833243926886189, guid: 07567ef69d8c54536a5904a8ae526a9d, type: 3}
