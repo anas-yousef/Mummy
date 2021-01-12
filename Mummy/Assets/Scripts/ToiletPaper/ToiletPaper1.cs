@@ -45,8 +45,6 @@ public class ToiletPaper1 : MonoBehaviour
             }
             enabled = _distance > 0;
             _hit = _distance > 0;
-            //Debug.Log(_distance);
-
         }
         if (_distance > 0)
         {
@@ -78,6 +76,11 @@ public class ToiletPaper1 : MonoBehaviour
         {
             _hit = true;
             playerScript.WallHit(collision.gameObject);
+        }
+        if (collision.gameObject.tag == "SwingBox" && !_hit)
+        {
+            _hit = true;
+            playerScript.SwingBoxHit(collision.gameObject);
         }
     }
     public void SetDistance(float distance)

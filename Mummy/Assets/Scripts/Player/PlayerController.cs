@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    void Update()
+    void FixedUpdate()
     {
         //horizontalMove = Input.GetAxisRaw("Horizontal") * speed * Time.deltaTime;
         horizontalMove = Input.GetAxisRaw("Horizontal") * speed;
@@ -112,7 +112,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         if (pressJump)
         {
