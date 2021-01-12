@@ -1944,6 +1944,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2891422301067493871, guid: 28ca93cf8e3ae49eb9511351598cbc36, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2891422301067493871, guid: 28ca93cf8e3ae49eb9511351598cbc36, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8855627576699212367, guid: 28ca93cf8e3ae49eb9511351598cbc36, type: 3}
       propertyPath: m_Name
       value: Grid

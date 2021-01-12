@@ -43,6 +43,10 @@ public class ToiletPaper1 : MonoBehaviour
                 transform.position = playerPos.position;
                 _distance = 0;
             }
+            else
+            {
+                _distance += 1;
+            }
             enabled = _distance > 0;
             _hit = _distance > 0;
         }

@@ -48,7 +48,7 @@ public class PlayerThrow1 : MonoBehaviour
         }
         if(distanceJoint.enabled && distanceJoint.distance > Vector3.Distance(positionBeforeSwing, target.transform.position) - 2f)
         {
-            distanceJoint.distance -= 0.008f;
+            distanceJoint.distance -= 2f*Time.deltaTime;
         }
         if(Input.GetButtonDown("Fire1") && isSwingnig)
         {

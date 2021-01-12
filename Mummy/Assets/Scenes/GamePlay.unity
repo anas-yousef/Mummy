@@ -858,7 +858,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7624342948942997888, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7624342948942997916, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}
       propertyPath: m_LocalPosition.x
@@ -916,6 +916,10 @@ PrefabInstance:
       propertyPath: gm
       value: 
       objectReference: {fileID: 1929230971}
+    - target: {fileID: 7624342949113591560, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}
+      propertyPath: jumpForce
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 7624342949113591561, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}
       propertyPath: m_Mass
       value: 9
