@@ -19,7 +19,10 @@ public class PlayerController : MonoBehaviour
     private bool isFalling;
     private bool isMoving;
     private bool canMove;
-    
+    private bool pressJump;
+    private Vector3 m_Velocity = Vector3.zero;
+    [Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;
+
     void Start()
     {
         speed = 5f;
@@ -50,7 +53,7 @@ public class PlayerController : MonoBehaviour
             if(isMoving)
             {
                 //Vector3.MoveTowards()
-                transform.position = new Vector3(transform.position.x + horizontalMove, transform.position.y, transform.position.z);
+                //transform.position = new Vector3(transform.position.x + horizontalMove, transform.position.y, transform.position.z);
             }
             
         }
@@ -67,7 +70,7 @@ public class PlayerController : MonoBehaviour
             //rigidbody2d.velocity = new Vector2(horizontalMove * 100, rigidbody2d.velocity.y);
             if (isMoving)
             {
-                transform.position = new Vector3(transform.position.x + horizontalMove, transform.position.y, transform.position.z);
+                //transform.position = new Vector3(transform.position.x + horizontalMove, transform.position.y, transform.position.z);
             }
             
         }
@@ -81,7 +84,8 @@ public class PlayerController : MonoBehaviour
 
         if (isGrounded && Input.GetKeyDown(KeyCode.UpArrow) && canMove)
         {
-            rigidbody2d.AddForce(transform.up * 100, ForceMode2D.Impulse);
+            pressJump = true;
+            //rigidbody2d.AddForce(transform.up * 100, ForceMode2D.Impulse);
             animator.SetBool("IsJumping", true);
             animator.SetBool("IsFalling", false);
             isJumping = true;
@@ -105,9 +109,28 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void FixedUpdate()
+    {
+        if (pressJump)
+        {
+            Debug.Log("Still here");
+            rigidbody2d.AddForce(transform.up * 50, ForceMode2D.Impulse);
+            pressJump = false;
+        }
+        if(isMoving)
+        {
+            Vector3 targetVelocity = new Vector2(horizontalMove * 10f, rigidbody2d.velocity.y);
+            // And then smoothing it out and applying it to the character
+            rigidbody2d.velocity = Vector3.SmoothDamp(rigidbody2d.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
+        }
+       
+
+    }
+
     private bool CheckIsGrounded()
     {
         RaycastHit2D raycastHit2d = Physics2D.BoxCast(boxCollider2d.bounds.center, boxCollider2d.bounds.size, 0f, Vector2.down, 0.1f, platformsLayerMask);
+       
         return raycastHit2d.collider != null;
     }
 

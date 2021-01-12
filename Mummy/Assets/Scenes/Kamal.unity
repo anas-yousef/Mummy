@@ -675,6 +675,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DraggableBox
       objectReference: {fileID: 0}
+    - target: {fileID: 702386487790332460, guid: 8e6fdb9e4f2ed124b9a011b6e786bb9d, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 702386487790332461, guid: 8e6fdb9e4f2ed124b9a011b6e786bb9d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.16
@@ -771,6 +775,10 @@ PrefabInstance:
     - target: {fileID: 7624342949113591556, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7624342949113591561, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}
+      propertyPath: m_Material
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7624342949113591603, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}
       propertyPath: m_Name
