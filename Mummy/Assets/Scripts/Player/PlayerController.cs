@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.LeftArrow) && canMove)
         {
-            //Debug.Log(canMove);
+            // Debug.Log(canMove);
             isMoving = true;
             Vector3 newScale = transform.localScale;
             if (newScale.x > 0)
