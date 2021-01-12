@@ -35,10 +35,10 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    void FixedUpdate()
+    void Update()
     {
-        //horizontalMove = Input.GetAxisRaw("Horizontal") * speed * Time.deltaTime;
-        horizontalMove = Input.GetAxisRaw("Horizontal") * speed;
+        horizontalMove = Input.GetAxisRaw("Horizontal") * speed * Time.deltaTime;
+        //horizontalMove = Input.GetAxisRaw("Horizontal") * speed;
         isGrounded = CheckIsGrounded();
 
         if (Input.GetKey(KeyCode.LeftArrow) && canMove)
@@ -56,7 +56,7 @@ public class PlayerController : MonoBehaviour
             if(isMoving)
             {
                 //Vector3.MoveTowards()
-                //transform.position = new Vector3(transform.position.x + horizontalMove, transform.position.y, transform.position.z);
+               transform.position = new Vector3(transform.position.x + horizontalMove, transform.position.y, transform.position.z);
             }
             
         }
@@ -73,7 +73,7 @@ public class PlayerController : MonoBehaviour
             //rigidbody2d.velocity = new Vector2(horizontalMove * 100, rigidbody2d.velocity.y);
             if (isMoving)
             {
-                //transform.position = new Vector3(transform.position.x + horizontalMove, transform.position.y, transform.position.z);
+                transform.position = new Vector3(transform.position.x + horizontalMove, transform.position.y, transform.position.z);
             }
             
         }
@@ -88,7 +88,7 @@ public class PlayerController : MonoBehaviour
         if (isGrounded && Input.GetKeyDown(KeyCode.UpArrow) && canMove)
         {
             pressJump = true;
-            //rigidbody2d.AddForce(transform.up * 100, ForceMode2D.Impulse);
+            rigidbody2d.AddForce(transform.up * 100, ForceMode2D.Impulse);
             animator.SetBool("IsJumping", true);
             animator.SetBool("IsFalling", false);
             isJumping = true;
@@ -112,26 +112,26 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        if (pressJump)
-        {
-            rigidbody2d.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
-            pressJump = false;
-        }
-        if(isMoving)
-        {
-            Vector3 targetVelocity = new Vector2(horizontalMove * Time.fixedDeltaTime * movementForce, rigidbody2d.velocity.y);
-            // And then smoothing it out and applying it to the character
-            rigidbody2d.velocity = Vector3.SmoothDamp(rigidbody2d.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
-        }
-        if (!isMoving && !isFalling && !isJumping)
-        {
-            //rigidbody2d.velocity = Vector3.zero;
-        }
+    //private void FixedUpdate()
+    //{
+    //    if (pressJump)
+    //    {
+    //        rigidbody2d.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
+    //        pressJump = false;
+    //    }
+    //    if(isMoving)
+    //    {
+    //        Vector3 targetVelocity = new Vector2(horizontalMove * Time.fixedDeltaTime * movementForce, rigidbody2d.velocity.y);
+    //        // And then smoothing it out and applying it to the character
+    //        rigidbody2d.velocity = Vector3.SmoothDamp(rigidbody2d.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
+    //    }
+    //    if (!isMoving && !isFalling && !isJumping)
+    //    {
+    //        //rigidbody2d.velocity = Vector3.zero;
+    //    }
        
 
-    }
+    //}
 
     private bool CheckIsGrounded()
     {
