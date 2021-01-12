@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Rigidbody2D rigidbody2d;
     [SerializeField] private BoxCollider2D boxCollider2d;
     [SerializeField] private LayerMask platformsLayerMask;
+    [SerializeField] private float jumpForce;
+    [SerializeField] private float movementForce;
     private float horizontalMove = 0f;
     private bool isGrounded;
     private bool isJumping;
@@ -35,7 +37,8 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        horizontalMove = Input.GetAxisRaw("Horizontal") * speed * Time.deltaTime;
+        //horizontalMove = Input.GetAxisRaw("Horizontal") * speed * Time.deltaTime;
+        horizontalMove = Input.GetAxisRaw("Horizontal") * speed;
         isGrounded = CheckIsGrounded();
 
         if (Input.GetKey(KeyCode.LeftArrow) && canMove)
@@ -113,15 +116,18 @@ public class PlayerController : MonoBehaviour
     {
         if (pressJump)
         {
-            Debug.Log("Still here");
-            rigidbody2d.AddForce(transform.up * 50, ForceMode2D.Impulse);
+            rigidbody2d.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
             pressJump = false;
         }
         if(isMoving)
         {
-            Vector3 targetVelocity = new Vector2(horizontalMove * 10f, rigidbody2d.velocity.y);
+            Vector3 targetVelocity = new Vector2(horizontalMove * Time.fixedDeltaTime * movementForce, rigidbody2d.velocity.y);
             // And then smoothing it out and applying it to the character
             rigidbody2d.velocity = Vector3.SmoothDamp(rigidbody2d.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
+        }
+        if (!isMoving && !isFalling && !isJumping)
+        {
+            //rigidbody2d.velocity = Vector3.zero;
         }
        
 

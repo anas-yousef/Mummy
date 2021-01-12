@@ -45,7 +45,7 @@ public class ToiletPaper1 : MonoBehaviour
             }
             enabled = _distance > 0;
             _hit = _distance > 0;
-            Debug.Log(_distance);
+            //Debug.Log(_distance);
 
         }
         if (_distance > 0)

@@ -776,10 +776,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7624342949113591560, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}
+      propertyPath: m_MovementSmoothing
+      value: 0.162
+      objectReference: {fileID: 0}
+    - target: {fileID: 7624342949113591560, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}
+      propertyPath: jumpForce
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 7624342949113591560, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}
+      propertyPath: movementForce
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 7624342949113591561, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}
       propertyPath: m_Material
       value: 
+      objectReference: {fileID: 6200000, guid: 5e735d3bbc48a1e4993fa037fa668a46, type: 2}
+    - target: {fileID: 7624342949113591561, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}
+      propertyPath: m_Mass
+      value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 7624342949113591564, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 5e735d3bbc48a1e4993fa037fa668a46, type: 2}
     - target: {fileID: 7624342949113591603, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}
       propertyPath: m_Name
       value: Player
