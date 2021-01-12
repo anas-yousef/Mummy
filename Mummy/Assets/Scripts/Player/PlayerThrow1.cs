@@ -33,7 +33,7 @@ public class PlayerThrow1 : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Fire1") && !toiletPaper.gameObject.activeSelf && !jointLine.enabled && !playerController.GetIsJumpingFalling()) // if the toilet paper is not away 
+        if (Input.GetButtonDown("Fire1") && !toiletPaper.gameObject.activeSelf && !jointLine.enabled && !playerController.GetIsJumpingFalling())  
         {
             toiletPaper.Throw();
             toiletPaper.gameObject.SetActive(true);
@@ -61,12 +61,12 @@ public class PlayerThrow1 : MonoBehaviour
     }
     public void DraggableBoxRelease()
     {
+        toiletPaper.transform.position = target.transform.position;
+        toiletPaper.GetComponent<ToiletPaper1>().SetDistance(Vector3.Distance(transform.position, target.transform.position));
+        toiletPaper.gameObject.SetActive(true);
+        target.GetComponent<Rigidbody2D>().mass =10000;
         jointLine.enabled = false;
         toiletLine.enabled = false;
-        toiletPaper.transform.position = target.transform.position;
-        toiletPaper.gameObject.SetActive(true);
-        toiletPaper.GetComponent<ToiletPaper1>().SetDistance(Vector3.Distance(transform.position, target.transform.position));
-        target.GetComponent<Rigidbody2D>().mass =1000;
         target = null;
     }
     public void ReleaseFloor()

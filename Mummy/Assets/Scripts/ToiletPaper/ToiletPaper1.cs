@@ -38,18 +38,24 @@ public class ToiletPaper1 : MonoBehaviour
             positionTrack = transform.position;
             transform.position = Vector3.MoveTowards(transform.position, playerPos.position, travel);
             _distance -= Vector3.Distance(transform.position, positionTrack);
-            enabled = _distance > 0.05;
-            _hit = _distance > 0.05;
+            if (transform.localPosition == Vector3.zero)
+            {
+                transform.position = playerPos.position;
+                _distance = 0;
+            }
+            enabled = _distance > 0;
+            _hit = _distance > 0;
+            Debug.Log(_distance);
+
         }
-        if (_distance > 0.05)
+        if (_distance > 0)
         {
             playerScript.SetPaperMoving(true);
-            Debug.Log("Moving");
         }
         else
         {
+      
             playerScript.SetPaperMoving(false);
-            Debug.Log("NotMoving");
         }
     }
     private void OnEnable ()
@@ -65,7 +71,7 @@ public class ToiletPaper1 : MonoBehaviour
         if (collision.gameObject.tag == "DraggableBox" && !_hit)
         {
             _hit = true;
-            collision.gameObject.GetComponent<Rigidbody2D>().mass =1;
+            collision.gameObject.GetComponent<Rigidbody2D>().mass=1;
             playerScript.DraggableBoxHit(collision.gameObject);
         }
         if (collision.gameObject.layer == 10 && !_hit)
