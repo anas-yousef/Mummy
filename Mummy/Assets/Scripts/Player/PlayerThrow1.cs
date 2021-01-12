@@ -13,6 +13,7 @@ public class PlayerThrow1 : MonoBehaviour
     [SerializeField] private DistanceJoint2D distanceJoint;
     [SerializeField] private float seconds;
     [SerializeField] private PlayerController playerController;
+    private Vector3 positionBeforeSwing;
     private GameObject target;
     private bool isPaperMoving;
     private bool isSwingnig;
@@ -45,10 +46,10 @@ public class PlayerThrow1 : MonoBehaviour
             toiletLine.SetPosition(0,transform.position);
             toiletLine.SetPosition(1, target.transform.position);
         }
-        /*if(distanceJoint.enabled && distanceJoint.distance > Vector3.Distance(transform.position, target.transform.position) - 2f)
+        if(distanceJoint.enabled && distanceJoint.distance > Vector3.Distance(positionBeforeSwing, target.transform.position) - 2f)
         {
-            distanceJoint.distance -= 0.1f;
-        }*/
+            distanceJoint.distance -= 0.008f;
+        }
         if(Input.GetButtonDown("Fire1") && isSwingnig)
         {
             SwingBoxRelease();
@@ -105,12 +106,13 @@ public class PlayerThrow1 : MonoBehaviour
     }
     public void SwingBoxHit(GameObject hit)
     {
+        positionBeforeSwing = transform.position;
         isSwingnig = true;
         target = hit;
         toiletLine.enabled = true;
-        jointLine.enabled = true;
-        jointLine.connectedBody = target.GetComponent<Rigidbody2D>();
-        //distanceJoint.distance = Vector3.Distance(transform.position, target.transform.position) - 1.5f;
+        distanceJoint.enabled = true;
+        distanceJoint.connectedBody = target.GetComponent<Rigidbody2D>();
+        distanceJoint.distance = Vector3.Distance(transform.position, target.transform.position);
         toiletPaper.gameObject.SetActive(false);
         toiletLine.SetPosition(0, transform.position);
     }
