@@ -1,29 +1,29 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class ToiletPaper1 : MonoBehaviour
+public class MummyPaper : MonoBehaviour
 {
     [Header("Settings")]
+    [SerializeField] PlayerShooting playerScript; //player script
+    [SerializeField] private Transform playerPos;
     public float speed = 3f; // default speed 1 unit / second
     public float distance = 8f; // default distance 5 units
+
     private float _distance; // the distance it moves
     private bool _back; // is it coming back
-    [SerializeField] PlayerThrow1 playerScript; //player script
-    [SerializeField] private Transform playerPos;
     private bool _hit; //can get hit
     private Vector3 positionTrack;
-    private bool ToiletPaperMoving;
-    
 
-    public void Throw ()
+
+    public void Throw()
     {
-        _distance = 0; 
-        _back = false; 
+        _distance = 0;
+        _back = false;
         enabled = true;
     }
- 
-    private void Update ()
+
+    private void Update()
     {
         float travel = Time.deltaTime * speed;
         if (!_back)
@@ -56,24 +56,24 @@ public class ToiletPaper1 : MonoBehaviour
         }
         else
         {
-      
+
             playerScript.SetPaperMoving(false);
         }
     }
-    private void OnEnable ()
+    private void OnEnable()
     {
         gameObject.SetActive(true);
     }
-    private void OnDisable ()
+    private void OnDisable()
     {
-        gameObject.SetActive (false);
+        gameObject.SetActive(false);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "DraggableBox" && !_hit)
         {
             _hit = true;
-            collision.gameObject.GetComponent<Rigidbody2D>().mass=1;
+            collision.gameObject.GetComponent<Rigidbody2D>().mass = 1;
             playerScript.DraggableBoxHit(collision.gameObject);
         }
         if (collision.gameObject.layer == 10 && !_hit)
@@ -91,5 +91,4 @@ public class ToiletPaper1 : MonoBehaviour
     {
         _distance = distance;
     }
-   
 }
