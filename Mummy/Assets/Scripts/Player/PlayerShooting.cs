@@ -38,7 +38,7 @@ public class PlayerShooting : MonoBehaviour
         distanceJoint.enabled = false;
         jointNodes = new GameObject[numberOfNodes];
         toiletPaper.gameObject.SetActive(false);
-        toiletLine.enabled = false;
+        //toiletLine.enabled = false;
     }
 
     void Update()
@@ -50,17 +50,24 @@ public class PlayerShooting : MonoBehaviour
         }
         if (target != null && isSwingnig)
         {
-            toiletLine.positionCount = numberOfNodes;
+            toiletLine.positionCount = numberOfNodes+1;
             for(int i = 0; i < numberOfNodes; i++)
             {
                 toiletLine.SetPosition(i, jointNodes[i].transform.position);
             }
+            toiletLine.SetPosition(numberOfNodes, transform.position);
         }
-        if(target != null && !isSwingnig)
+        else if(target != null && !isSwingnig)
         {
             toiletLine.positionCount = 2;
             toiletLine.SetPosition(0, transform.position);
             toiletLine.SetPosition(1, target.transform.position);
+        }
+        else
+        {
+            toiletLine.positionCount = 2;
+            toiletLine.SetPosition(0, transform.position);
+            toiletLine.SetPosition(1, toiletPaper.transform.position);
         }
         if (distanceJoint.enabled && distanceJoint.distance > distanceFromLastNode)
         {
@@ -70,6 +77,7 @@ public class PlayerShooting : MonoBehaviour
         {
             SwingBoxRelease();
         }
+
     }
     private IEnumerator ReleaseAfterSeconds(CollidedObject collidedObject)
     {
@@ -91,7 +99,7 @@ public class PlayerShooting : MonoBehaviour
         toiletPaper.gameObject.SetActive(true);
         target.GetComponent<Rigidbody2D>().mass = 10000;
         springJoint.enabled = false;
-        toiletLine.enabled = false;
+        //toiletLine.enabled = false;
         target = null;
     }
     public void ReleaseFloor()
@@ -104,7 +112,7 @@ public class PlayerShooting : MonoBehaviour
         isSwingnig = false;
         toiletPaper.gameObject.SetActive(true);
         distanceJoint.enabled = false;
-        toiletLine.enabled = false;
+        //toiletLine.enabled = false;
         RemoveCollider();
         target = null;
         springJoint.enabled = false;
@@ -134,11 +142,13 @@ public class PlayerShooting : MonoBehaviour
     }
     private void AddColliderToLine()
     {
+        toiletLine.positionCount = numberOfNodes;
         gameObject.GetComponent<Rigidbody2D>().AddForce(transform.up * jumpOnSwingForce,ForceMode2D.Impulse);
         for (int i=0; i < numberOfNodes; i++)
         {
             jointNodes[i] = Instantiate(Resources.Load("Nodes/NodeJoint")) as GameObject;
             jointNodes[i].transform.position =target.transform.position;
+            toiletLine.SetPosition(i, jointNodes[i].transform.position);
         }
         jointNodes[0].GetComponent<DistanceJoint2D>().connectedBody = target.GetComponent<Rigidbody2D>();
         for (int i = 1; i < numberOfNodes; i++)
