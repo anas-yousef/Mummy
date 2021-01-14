@@ -43,7 +43,7 @@ public class PlayerShooting : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Fire1") && !toiletPaper.gameObject.activeSelf && !springJoint.enabled && !playerController.GetIsJumpingFalling())
+        if (Input.GetButtonDown("Fire1") && !toiletPaper.gameObject.activeSelf && !springJoint.enabled && !playerController.InAir())
         {
             toiletPaper.Throw();
             toiletPaper.gameObject.SetActive(true);
