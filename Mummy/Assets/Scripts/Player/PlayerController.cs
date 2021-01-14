@@ -39,6 +39,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         horizontalMove = Input.GetAxisRaw("Horizontal") * speed * Time.deltaTime;
+        horizontalMovePhysics = Input.GetAxisRaw("Horizontal") * speed;
         isGrounded = CheckIsGrounded();
 
         if (Input.GetKey(KeyCode.LeftArrow) && canMove)
@@ -54,7 +55,7 @@ public class PlayerController : MonoBehaviour
             
             if(isMoving)
             {
-               transform.position = new Vector3(transform.position.x + horizontalMove, transform.position.y, transform.position.z);
+               //transform.position = new Vector3(transform.position.x + horizontalMove, transform.position.y, transform.position.z);
             }
             
         }
@@ -70,7 +71,7 @@ public class PlayerController : MonoBehaviour
             }
             if (isMoving)
             {
-                transform.position = new Vector3(transform.position.x + horizontalMove, transform.position.y, transform.position.z);
+                //transform.position = new Vector3(transform.position.x + horizontalMove, transform.position.y, transform.position.z);
             }
             
         }
@@ -94,6 +95,7 @@ public class PlayerController : MonoBehaviour
 
         if (rigidbody2d.velocity.y < -0.1)
         {
+            //Debug.Log("Falling");
             isJumping = false;
             isFalling = true;
             animator.SetBool("IsFalling", true);
@@ -116,25 +118,37 @@ public class PlayerController : MonoBehaviour
             rigidbody2d.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
             pressJump = false;
         }
-        //    if(isMoving)
-        //    {
-        //        Vector3 targetVelocity = new Vector2(horizontalMovePhysics * Time.fixedDeltaTime * movementForce, rigidbody2d.velocity.y);
-        //        // And then smoothing it out and applying it to the character
-        //        rigidbody2d.velocity = Vector3.SmoothDamp(rigidbody2d.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
-        //    }
-        //    if (!isMoving && !isFalling && !isJumping)
-        //    {
-        //        //rigidbody2d.velocity = Vector3.zero;
-        //    }
+        if (isMoving)
+        {
+            Vector3 targetVelocity = new Vector2(horizontalMovePhysics * Time.fixedDeltaTime * movementForce, rigidbody2d.velocity.y);
+            // And then smoothing it out and applying it to the character
+            rigidbody2d.velocity = Vector3.SmoothDamp(rigidbody2d.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
+        }
+        if (!isMoving && !isFalling && !isJumping)
+        {
+            //rigidbody2d.velocity = Vector3.zero;
+        }
 
 
     }
 
 private bool CheckIsGrounded()
     {
-        RaycastHit2D raycastHit2d = Physics2D.BoxCast(boxCollider2d.bounds.center, boxCollider2d.bounds.size, 0f, Vector2.down, 0.1f, platformsLayerMask);
-       
-        return raycastHit2d.collider != null;
+        RaycastHit2D boxcastHit2d = Physics2D.BoxCast(boxCollider2d.bounds.center, boxCollider2d.bounds.size, 0f, Vector2.down, 0.1f, platformsLayerMask);
+        RaycastHit2D raycastHit2d = Physics2D.Raycast(boxCollider2d.bounds.center, Vector2.down, boxCollider2d.bounds.extents.y + 0.1f, platformsLayerMask);
+        Color rayColor;
+        if (raycastHit2d.collider != null)
+        {
+            rayColor = Color.green;
+        }
+        else
+        {
+            rayColor = Color.red;
+        }
+
+        Debug.DrawRay(boxCollider2d.bounds.center, Vector2.down * (boxCollider2d.bounds.extents.y + 0.1f), rayColor);
+
+        return boxcastHit2d.collider != null && raycastHit2d.collider != null;
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -172,7 +186,7 @@ private bool CheckIsGrounded()
         return canMove;
     }
 
-    public bool GetIsJumpingFalling()
+    public bool InAir()
     {
         return isJumping || isFalling;
     }

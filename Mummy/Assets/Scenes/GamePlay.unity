@@ -904,6 +904,10 @@ PrefabInstance:
       propertyPath: gm
       value: 
       objectReference: {fileID: 1929230971}
+    - target: {fileID: 7624342949113591560, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}
+      propertyPath: jumpForce
+      value: 90
+      objectReference: {fileID: 0}
     - target: {fileID: 7624342949113591561, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}
       propertyPath: m_Mass
       value: 9
@@ -928,6 +932,10 @@ PrefabInstance:
       propertyPath: m_Size.y
       value: 4.9973907
       objectReference: {fileID: 0}
+    - target: {fileID: 7624342949113591565, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}
+      propertyPath: distanceJoint
+      value: 
+      objectReference: {fileID: 621311197}
     - target: {fileID: 7624342949113591567, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}
       propertyPath: m_SortingOrder
       value: 2
@@ -943,6 +951,25 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7624342949113591603, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}
   m_PrefabInstance: {fileID: 617577322}
   m_PrefabAsset: {fileID: 0}
+--- !u!232 &621311197
+DistanceJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 621311196}
+  m_Enabled: 0
+  serializedVersion: 4
+  m_EnableCollision: 0
+  m_ConnectedRigidBody: {fileID: 0}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_AutoConfigureConnectedAnchor: 0
+  m_Anchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: 0, y: 0}
+  m_AutoConfigureDistance: 1
+  m_Distance: 7.115912
+  m_MaxDistanceOnly: 0
 --- !u!114 &621311201 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7624342949113591560, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}

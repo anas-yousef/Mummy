@@ -36,7 +36,7 @@ public class PlayerThrow1 : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Fire1") && !toiletPaper.gameObject.activeSelf && !jointLine.enabled && !playerController.GetIsJumpingFalling())  
+        if (Input.GetButtonDown("Fire1") && !toiletPaper.gameObject.activeSelf && !jointLine.enabled && !playerController.InAir())  
         {
             toiletPaper.Throw();
             toiletPaper.gameObject.SetActive(true);
