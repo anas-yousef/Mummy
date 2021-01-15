@@ -4,18 +4,14 @@ public class GameManager : MonoBehaviour
 {
     [Header("Player")]
     public GameObject player;
-    public PlayerMovement playerMovement;
 
     [Header("Levels")]
     // todo need to update here every new level 
     public GameObject[] levels = new GameObject[2];
-    public Transform[] playerStartLocation = new Transform[2];
-    public GameObject[] draggable = new GameObject[2];
     
     private int _curLevel;
     private GameObject _curLevelMap;
-    private GameObject _curDraggables;
-
+    private Transform _curStartLocation;
     
     [Header("Panels")] 
     public GameObject startPanel;
@@ -52,10 +48,11 @@ public class GameManager : MonoBehaviour
         // Get first level.
         _curLevel = 0;
         _curLevelMap = Instantiate(levels[_curLevel]);
-        _curDraggables = Instantiate(draggable[_curLevel]);
-        player.transform.localPosition = new Vector3(playerStartLocation[_curLevel].position.x, 
-            playerStartLocation[_curLevel].position.y, 0);        
+        Transform trans = _curLevelMap.transform;
         
+        // Locate the player
+        _curStartLocation = trans.Find("Player Start Location");
+        player.transform.localPosition = new Vector3(_curStartLocation.position.x, _curStartLocation.position.y, 0);        
         
         player.SetActive(true);
     }
@@ -68,7 +65,6 @@ public class GameManager : MonoBehaviour
     {
         // Destroy current level.
         Destroy(_curLevelMap);
-        Destroy(_curDraggables);
         
         // No more levels. 
         if (_curLevel + 1 == levels.Length)
@@ -83,11 +79,12 @@ public class GameManager : MonoBehaviour
             _curLevel += 1;
             // Get the next level.
             _curLevelMap = Instantiate(levels[_curLevel]);
-            _curDraggables = Instantiate(draggable[_curLevel]);
 
             // relocate the player
-            player.transform.localPosition = new Vector3(playerStartLocation[_curLevel].position.x, 
-                playerStartLocation[_curLevel].position.y, 0);   
+            Transform trans = _curLevelMap.transform;
+            _curStartLocation = trans.Find("Player Start Location");
+            
+            player.transform.localPosition = new Vector3(_curStartLocation.position.x, _curStartLocation.position.y, 0); 
         }
     }
 
@@ -102,13 +99,15 @@ public class GameManager : MonoBehaviour
         // Disable settings panel in case exists.
         settingsPanel.SetActive(false);
         
+        // Restart the map.
+        Destroy(_curLevelMap);
+        _curLevelMap = Instantiate(levels[_curLevel]);
+
         // relocate the player
-        player.transform.position = new Vector3(playerStartLocation[_curLevel].position.x, 
-                                                     playerStartLocation[_curLevel].position.y, 0);
-
-        // Stop it's movement. 
-        playerMovement.StopMovement();
-
+        Transform trans = _curLevelMap.transform;
+        _curStartLocation = trans.Find("Player Start Location");
+        player.transform.localPosition = new Vector3(_curStartLocation.position.x, _curStartLocation.position.y, 0);
+        
     }
     
     /**
@@ -118,7 +117,6 @@ public class GameManager : MonoBehaviour
     {
         // Destrory current level. 
         Destroy(_curLevelMap);
-        Destroy(_curDraggables);
 
         // Start time.
         Time.timeScale = 1.0f;

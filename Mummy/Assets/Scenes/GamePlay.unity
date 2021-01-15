@@ -1821,20 +1821,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1929230970}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a5803e9fce7a4fdb96bb5760cf10f51, type: 3}
+  m_Script: {fileID: 11500000, guid: d97e1c9b526ae44b09e49adf8dbbf664, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 621311196}
-  playerMovement: {fileID: 0}
   levels:
   - {fileID: 8443342794192782907, guid: 7a0e25eabf6122248b108211010869de, type: 3}
   - {fileID: 5847019159441803097, guid: fe26e5bcb9e424521be9f515a18183f9, type: 3}
-  playerStartLocation:
-  - {fileID: 8064833243926886189, guid: 07567ef69d8c54536a5904a8ae526a9d, type: 3}
-  - {fileID: 649642013243677946, guid: 1b44a6bef160e478a8784a9335b04d87, type: 3}
-  draggable:
-  - {fileID: 4910374074847814528, guid: 52d128cc3ca15482e89443f7494652cc, type: 3}
-  - {fileID: 2426588578401419728, guid: b5281a02440b5455db5b2c846b93c442, type: 3}
   startPanel: {fileID: 2083757340}
   winPanel: {fileID: 350779047}
   settingsPanel: {fileID: 342131051}
@@ -2153,6 +2146,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1564766367, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}
+      propertyPath: gm
+      value: 
+      objectReference: {fileID: 1929230971}
     - target: {fileID: 2118273134075098176, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}
       propertyPath: speed
       value: 4
