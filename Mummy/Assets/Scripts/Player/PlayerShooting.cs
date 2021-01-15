@@ -11,8 +11,6 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] private DistanceJoint2D distanceJoint;
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private float seconds;
-    [SerializeField] private float distanceFromLastNode = 0.2f;
-    [SerializeField] private float pullingPlayerSpeed = 5f;
     [SerializeField] private float jumpOnSwingForce = 60;
     [SerializeField] private float NodesFactor=4;
     private int numberOfNodes;
@@ -38,7 +36,6 @@ public class PlayerShooting : MonoBehaviour
         distanceJoint.enabled = false;
         jointNodes = new GameObject[numberOfNodes];
         toiletPaper.gameObject.SetActive(false);
-        //toiletLine.enabled = false;
     }
 
     void Update()
@@ -69,10 +66,6 @@ public class PlayerShooting : MonoBehaviour
             toiletLine.SetPosition(0, transform.position);
             toiletLine.SetPosition(1, toiletPaper.transform.position);
         }
-        if (distanceJoint.enabled && distanceJoint.distance > distanceFromLastNode)
-        {
-            distanceJoint.distance -= pullingPlayerSpeed * Time.deltaTime;
-        }
         if (Input.GetButtonDown("Fire1") && isSwingnig)
         {
             SwingBoxRelease();
@@ -99,7 +92,6 @@ public class PlayerShooting : MonoBehaviour
         toiletPaper.gameObject.SetActive(true);
         target.GetComponent<Rigidbody2D>().mass = 10000;
         springJoint.enabled = false;
-        //toiletLine.enabled = false;
         target = null;
     }
     public void ReleaseFloor()
@@ -112,7 +104,6 @@ public class PlayerShooting : MonoBehaviour
         isSwingnig = false;
         toiletPaper.gameObject.SetActive(true);
         distanceJoint.enabled = false;
-        //toiletLine.enabled = false;
         RemoveCollider();
         target = null;
         springJoint.enabled = false;
@@ -132,10 +123,9 @@ public class PlayerShooting : MonoBehaviour
         positionBeforeSwing = transform.position;
         isSwingnig = true;
         target = hit;
-        numberOfNodes = (int)(Vector3.Distance(target.transform.position, transform.position)* NodesFactor)-1;
+        numberOfNodes = (int)(Vector3.Distance(target.transform.position, transform.position)* NodesFactor);
         jointNodes = new GameObject[numberOfNodes];
         toiletLine.enabled = true;
-        distanceJoint.distance = Vector3.Distance(transform.position, target.transform.position);
         AddColliderToLine();
         distanceJoint.enabled = true;
         toiletPaper.gameObject.SetActive(false);
@@ -155,7 +145,8 @@ public class PlayerShooting : MonoBehaviour
         {
                 jointNodes[i].GetComponent<DistanceJoint2D>().connectedBody = jointNodes[i - 1].GetComponent<Rigidbody2D>();
         }
-        gameObject.GetComponent<DistanceJoint2D>().connectedBody = jointNodes[numberOfNodes-1].GetComponent<Rigidbody2D>();
+        gameObject.GetComponent<DistanceJoint2D>().connectedBody = jointNodes[numberOfNodes - 1].GetComponent<Rigidbody2D>();
+
     }
     public void RemoveCollider()
     {

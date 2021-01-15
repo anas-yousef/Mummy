@@ -2173,6 +2173,10 @@ PrefabInstance:
       propertyPath: seconds
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 2118273134968589122, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}
+      propertyPath: NodesFactor
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 2118273134968589123, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}
       propertyPath: m_Frequency
       value: 0.5
@@ -2228,7 +2232,7 @@ PrefabInstance:
     - target: {fileID: 2118273134968589180, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 20a7625a9f05f7d4483097f8f3600501, type: 2}
+      objectReference: {fileID: 10756, guid: 0000000000000000e000000000000000, type: 0}
     - target: {fileID: 2118273134968589181, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}
       propertyPath: gm
       value: 
