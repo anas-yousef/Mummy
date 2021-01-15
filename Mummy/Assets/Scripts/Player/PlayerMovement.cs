@@ -88,7 +88,7 @@ public class PlayerMovement : MonoBehaviour
 
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
 
-        if (isGrounded && Input.GetKeyDown(KeyCode.UpArrow))
+        if (isGrounded && Input.GetKeyDown(KeyCode.UpArrow) && canMove)
         {
             pressJump = true;
             isJumping = true;
