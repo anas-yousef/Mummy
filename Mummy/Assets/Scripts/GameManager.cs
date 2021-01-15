@@ -4,7 +4,7 @@ public class GameManager : MonoBehaviour
 {
     [Header("Player")]
     public GameObject player;
-    public PlayerController playerController;
+    public PlayerMovement playerMovement;
 
     [Header("Levels")]
     // todo need to update here every new level 
@@ -105,9 +105,9 @@ public class GameManager : MonoBehaviour
         // relocate the player
         player.transform.position = new Vector3(playerStartLocation[_curLevel].position.x, 
                                                      playerStartLocation[_curLevel].position.y, 0);
-        
+
         // Stop it's movement. 
-        playerController.StopMovement();
+        playerMovement.StopMovement();
 
     }
     

@@ -9,7 +9,7 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] private LineRenderer toiletLine;
     [SerializeField] private SpringJoint2D springJoint;
     [SerializeField] private DistanceJoint2D distanceJoint;
-    [SerializeField] private PlayerController playerController;
+    [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private float seconds;
     [SerializeField] private float distanceFromLastNode = 0.2f;
     [SerializeField] private float pullingPlayerSpeed = 5f;
@@ -43,7 +43,7 @@ public class PlayerShooting : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Fire1") && !toiletPaper.gameObject.activeSelf && !springJoint.enabled && !playerController.InAir())
+        if (Input.GetButtonDown("Fire1") && !toiletPaper.gameObject.activeSelf && !springJoint.enabled && !playerMovement.InAir())
         {
             toiletPaper.Throw();
             toiletPaper.gameObject.SetActive(true);
@@ -171,6 +171,6 @@ public class PlayerShooting : MonoBehaviour
     }
     public void SetPaperMoving(bool isPaperMoving)
     {
-        playerController.SetCanMove(!isPaperMoving);
+        playerMovement.SetCanMove(!isPaperMoving);
     }
 }

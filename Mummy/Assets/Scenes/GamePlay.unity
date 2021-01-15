@@ -854,17 +854,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2118273134968589120, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}
   m_PrefabInstance: {fileID: 2118273134481522588}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &621311201 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2118273134968589181, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}
-  m_PrefabInstance: {fileID: 2118273134481522588}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 621311196}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 664cb800ab3a9ee47b948c3f59cd083b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &753036285
 GameObject:
   m_ObjectHideFlags: 0
@@ -1836,7 +1825,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 621311196}
-  playerController: {fileID: 621311201}
+  playerMovement: {fileID: 0}
   levels:
   - {fileID: 8443342794192782907, guid: 7a0e25eabf6122248b108211010869de, type: 3}
   - {fileID: 5847019159441803097, guid: fe26e5bcb9e424521be9f515a18183f9, type: 3}
@@ -2254,7 +2243,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2118273134968589182, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}
       propertyPath: m_GravityScale
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2118273134968589182, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}
       propertyPath: m_Mass

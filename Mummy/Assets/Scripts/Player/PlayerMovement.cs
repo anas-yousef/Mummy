@@ -98,7 +98,6 @@ public class PlayerMovement : MonoBehaviour
            
         }
 
-        Debug.Log(rigidbody2d.velocity.y);
         if (rigidbody2d.velocity.y < -0.1)
         {
             isJumping = false;
