@@ -145,7 +145,7 @@ public class PlayerShooting : MonoBehaviour
         for (int i=0; i < numberOfNodes; i++)
         {
             jointNodes[i] = Instantiate(Resources.Load("Nodes/NodeJoint")) as GameObject;
-            jointNodes[i].transform.position = (target.transform.position + transform.position) * (i + 1) / numberOfNodes;
+            //jointNodes[i].transform.position = (target.transform.position + transform.position) * (i + 1) / numberOfNodes;
             jointNodes[i].transform.SetParent(hook.transform); 
             toiletLine.SetPosition(i, jointNodes[i].transform.position);
         }

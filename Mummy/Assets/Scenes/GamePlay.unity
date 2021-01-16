@@ -861,7 +861,7 @@ HingeJoint2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 621311196}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_EnableCollision: 0
   m_ConnectedRigidBody: {fileID: 0}
@@ -2203,7 +2203,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2118273134968589122, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}
       propertyPath: NodesFactor
-      value: 0.2
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 2118273134968589122, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}
       propertyPath: distanceFromLastNode
