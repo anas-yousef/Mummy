@@ -9,7 +9,7 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] private LineRenderer toiletLine;
     [SerializeField] private SpringJoint2D springJoint;
     [SerializeField] private DistanceJoint2D distanceJoint;
-    [SerializeField] private HingeJoint2D hingeJoint;
+    //[SerializeField] private HingeJoint2D hingeJoint;
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private float seconds;
     [SerializeField] private float jumpOnSwingForce = 60;
@@ -105,8 +105,8 @@ public class PlayerShooting : MonoBehaviour
         isSwingnig = false;
         playerMovement.SetIsSwinging(isSwingnig);
         toiletPaper.gameObject.SetActive(true);
-        //distanceJoint.enabled = false;
-        hingeJoint.enabled = false;
+        distanceJoint.enabled = false;
+       // hingeJoint.enabled = false;
         RemoveCollider();
         target = null;
         springJoint.enabled = false;
@@ -131,30 +131,29 @@ public class PlayerShooting : MonoBehaviour
         jointNodes = new GameObject[numberOfNodes];
         toiletLine.enabled = true;
         AddColliderToLine();
-        //distanceJoint.enabled = true;
-        hingeJoint.enabled = true;
+        distanceJoint.enabled = true;
+        //hingeJoint.enabled = true;
         toiletPaper.gameObject.SetActive(false);
     }
     private void AddColliderToLine()
     {
         toiletLine.positionCount = numberOfNodes;
         gameObject.GetComponent<Rigidbody2D>().AddForce(transform.up * jumpOnSwingForce,ForceMode2D.Impulse);
-        GameObject hook = new GameObject();
-        hook.transform.position = target.transform.position;
-
+        //GameObject hook = new GameObject();
+        //hook.transform.position = target.transform.position;
         for (int i=0; i < numberOfNodes; i++)
         {
             jointNodes[i] = Instantiate(Resources.Load("Nodes/NodeJoint")) as GameObject;
-            //jointNodes[i].transform.position = (target.transform.position + transform.position) * (i + 1) / numberOfNodes;
-            jointNodes[i].transform.SetParent(hook.transform); 
+            jointNodes[i].transform.position = target.transform.position;// (target.transform.position + transform.position) * (i + 1) / numberOfNodes;
+            //jointNodes[i].transform.SetParent(hook.transform); 
             toiletLine.SetPosition(i, jointNodes[i].transform.position);
         }
-        jointNodes[0].GetComponent<HingeJoint2D>().connectedBody = target.GetComponent<Rigidbody2D>();
+        jointNodes[0].GetComponent<DistanceJoint2D>().connectedBody = target.GetComponent<Rigidbody2D>();
         for (int i = 1; i < numberOfNodes; i++)
         {
-                jointNodes[i].GetComponent<HingeJoint2D>().connectedBody = jointNodes[i - 1].GetComponent<Rigidbody2D>();
+                jointNodes[i].GetComponent<DistanceJoint2D>().connectedBody = jointNodes[i - 1].GetComponent<Rigidbody2D>();
         }
-        gameObject.GetComponent<HingeJoint2D>().connectedBody = jointNodes[numberOfNodes - 1].GetComponent<Rigidbody2D>();
+        gameObject.GetComponent<DistanceJoint2D>().connectedBody = jointNodes[numberOfNodes - 1].GetComponent<Rigidbody2D>();
 
     }
     public void RemoveCollider()
