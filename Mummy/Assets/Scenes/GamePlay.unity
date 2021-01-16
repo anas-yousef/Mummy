@@ -2149,6 +2149,14 @@ PrefabInstance:
       propertyPath: gm
       value: 
       objectReference: {fileID: 1929230971}
+    - target: {fileID: 1564766367, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}
+      propertyPath: k_GroundedRadius
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1564766367, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}
+      propertyPath: jumpForce
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 2118273134075098176, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}
       propertyPath: speed
       value: 4
@@ -2175,7 +2183,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2118273134968589122, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}
       propertyPath: NodesFactor
-      value: 0.1
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 2118273134968589123, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}
       propertyPath: m_Frequency
@@ -2232,7 +2240,7 @@ PrefabInstance:
     - target: {fileID: 2118273134968589180, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 10756, guid: 0000000000000000e000000000000000, type: 0}
+      objectReference: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 2118273134968589181, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}
       propertyPath: gm
       value: 
@@ -2247,7 +2255,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2118273134968589182, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}
       propertyPath: m_Mass
-      value: 10
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}

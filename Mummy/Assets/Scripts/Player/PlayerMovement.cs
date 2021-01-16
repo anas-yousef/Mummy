@@ -8,16 +8,20 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     public GameManager gm;
 
+    [SerializeField] private Vector3 targetTransform;
+    [SerializeField] private Vector2 swinging;
     [SerializeField] private float speed;
     [SerializeField] private Animator animator;
     [SerializeField] private Rigidbody2D rigidbody2d;
     [SerializeField] private BoxCollider2D boxCollider2d;
     [SerializeField] private LayerMask platformsLayerMask;
     [SerializeField] private float jumpForce;
+    [SerializeField] private float downForce;
+    [SerializeField] private float swingingForce;
     [SerializeField] private float movementForce;
     [SerializeField] private Transform m_GroundCheck; // A position marking where to check if the player is grounded.
     [SerializeField] private Transform m_CeilingCheck; // A position marking where to check for ceilings
-    public float k_GroundedRadius = 0.22f; // Radius of the overlap circle to determine if grounded
+    public float k_GroundedRadius = 0.4f; // Radius of the overlap circle to determine if grounded
     private float horizontalMove = 0f;
     private float horizontalMovePhysics = 0f;
     private bool isGrounded;
@@ -26,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isMoving;
     private bool canMove;
     private bool pressJump;
+    private bool isSwingnig;
     private Vector3 m_Velocity = Vector3.zero;
     [Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;
 
@@ -49,7 +54,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         horizontalMove = Input.GetAxisRaw("Horizontal") * speed * Time.deltaTime;
-        horizontalMovePhysics = Input.GetAxisRaw("Horizontal") * speed;
+        horizontalMovePhysics = Input.GetAxisRaw("Horizontal");
         CheckIsGrounded();
 
         if (Input.GetKey(KeyCode.LeftArrow) && canMove)
@@ -122,6 +127,18 @@ public class PlayerMovement : MonoBehaviour
             rigidbody2d.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
             pressJump = false;
         }
+
+        if (isSwingnig)
+        {
+            Vector3 vectorDirection = targetTransform - transform.position;
+            //Vector2 swingingDirection = new Vector2(vectorDirection.y, -vectorDirection.x);
+            
+            Vector2 swingingDirection = new Vector2(vectorDirection.x, vectorDirection.y) + new Vector2(0, -downForce);
+            //swingingDirection += new Vector2(0, -downForce);
+            swinging = swingingDirection;
+            //rigidbody2d.AddRelativeForce(Vector2.right * horizontalMovePhysics * swingingForce, ForceMode2D.Impulse);
+            rigidbody2d.AddForce(swingingDirection * horizontalMovePhysics * swingingForce, ForceMode2D.Impulse);
+        }
     }
 
     private void CheckIsGrounded()
@@ -188,14 +205,23 @@ public class PlayerMovement : MonoBehaviour
         rigidbody2d.velocity = new Vector2(0, 0);
     }
 
-    public void SetCanMove(bool set)
+    public void SetCanMove(bool newMove)
     {
-        canMove = set;
+        canMove = newMove;
     }
 
-    public bool GetCanMove()
+    public bool CanMove => canMove;
+
+    public void SetIsSwinging(bool newSwing)
     {
-        return canMove;
+        isSwingnig = newSwing;
+    }
+
+    public bool GetIsSwinging() => isSwingnig;
+
+    public void SetTargetTransform(Vector3 transform)
+    {
+        targetTransform = transform;
     }
 
     public bool InAir()
