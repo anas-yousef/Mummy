@@ -196,7 +196,9 @@ public class PlayerMovement : MonoBehaviour
     {
         if (other.gameObject.tag.Equals("Exit"))
         {
-            gm.SwitchLevel();
+            Debug.Log("need to finish level");
+
+            gm.FinishLevel();
         }
     }
 

@@ -4,25 +4,29 @@ public class GameManager : MonoBehaviour
 {
     [Header("Player")]
     public GameObject player;
+    public MummyPaper tp;
 
     [Header("Levels")]
     // todo need to update here every new level 
     public GameObject[] levels = new GameObject[2];
     
+    [Header("Sounds")]
+    // todo need to update here every new level 
+    public AudioSource[] sounds = new AudioSource[2];
+
+    [Header("Panels")] 
+    public GameObject startPanel;
+    public GameObject settingsPanel;
+    public GameObject[] levelFinishedPanel = new GameObject[3];
+
     private int _curLevel;
     private GameObject _curLevelMap;
     private Transform _curStartLocation;
-    
-    [Header("Panels")] 
-    public GameObject startPanel;
-    public GameObject winPanel;
-    public GameObject settingsPanel;
 
     void Start()
     {
         // Manage panels. 
         startPanel.SetActive(true);
-        winPanel.SetActive(false);
         player.SetActive(false);
     }
 
@@ -35,6 +39,14 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 0.0f;
             settingsPanel.SetActive(true);
         }
+        
+        // Goto options. 
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            sounds[0].mute = !sounds[0].mute;
+            sounds[1].mute = !sounds[1].mute;
+        }
+
     }
 
     /**
@@ -61,20 +73,15 @@ public class GameManager : MonoBehaviour
      * After finishing a level- move to the next one!
      * if there are no more levels- move to Win screen
      */
-    public void SwitchLevel()
+    public void FinishLevel()
     {
         // Destroy current level.
         Destroy(_curLevelMap);
         
-        // No more levels. 
-        if (_curLevel + 1 == levels.Length)
-        {
-            Debug.Log("should win");
-            winPanel.SetActive(true);
-            player.SetActive(false);
-        }
+        // show next level panel 
+        levelFinishedPanel[_curLevel].SetActive(true);
 
-        else
+        if (_curLevel + 1 < levels.Length)
         {
             _curLevel += 1;
             // Get the next level.
@@ -84,8 +91,14 @@ public class GameManager : MonoBehaviour
             Transform trans = _curLevelMap.transform;
             _curStartLocation = trans.Find("Player Start Location");
             
-            player.transform.localPosition = new Vector3(_curStartLocation.position.x, _curStartLocation.position.y, 0); 
+            player.transform.localPosition = new Vector3(_curStartLocation.position.x, _curStartLocation.position.y, 0);
         }
+    }
+
+    public void StartNewLevel()
+    {
+        // show next level panel 
+        levelFinishedPanel[_curLevel - 1].SetActive(false);
     }
 
     /**
@@ -107,7 +120,9 @@ public class GameManager : MonoBehaviour
         Transform trans = _curLevelMap.transform;
         _curStartLocation = trans.Find("Player Start Location");
         player.transform.localPosition = new Vector3(_curStartLocation.position.x, _curStartLocation.position.y, 0);
-        
+        // TODO: stop the throw
+        // tp.StopThrow();
+
     }
     
     /**
@@ -123,7 +138,7 @@ public class GameManager : MonoBehaviour
 
         // Manage panels.
         settingsPanel.SetActive(false);
-        winPanel.SetActive(false);
+        levelFinishedPanel[_curLevel].SetActive(false);
         startPanel.SetActive(true);
 
         // Back to start settings. 

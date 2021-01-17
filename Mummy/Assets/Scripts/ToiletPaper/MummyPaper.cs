@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class MummyPaper : MonoBehaviour
 {
-    [Header("Settings")]
-    [SerializeField] PlayerShooting playerScript; //player script
+    [Header("Settings")] [SerializeField] PlayerShooting playerScript; //player script
     [SerializeField] private Transform playerPos;
     public float speed = 3f; // default speed 1 unit / second
     public float distance = 8f; // default distance 5 units
@@ -47,9 +46,11 @@ public class MummyPaper : MonoBehaviour
             {
                 _distance += 1;
             }
+
             enabled = _distance > 0;
             _hit = _distance > 0;
         }
+
         if (_distance > 0)
         {
             playerScript.SetPaperMoving(true);
@@ -60,14 +61,17 @@ public class MummyPaper : MonoBehaviour
             playerScript.SetPaperMoving(false);
         }
     }
+
     private void OnEnable()
     {
         gameObject.SetActive(true);
     }
+
     private void OnDisable()
     {
         gameObject.SetActive(false);
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "DraggableBox" && !_hit)
@@ -76,19 +80,29 @@ public class MummyPaper : MonoBehaviour
             //collision.gameObject.GetComponent<Rigidbody2D>().mass = 1;
             playerScript.DraggableBoxHit(collision.gameObject);
         }
+
         if (collision.gameObject.layer == 10 && !_hit)
         {
             _hit = true;
             playerScript.WallHit(collision.gameObject);
         }
+
         if (collision.gameObject.tag == "SwingBox" && !_hit)
         {
             _hit = true;
             playerScript.SwingBoxHit(collision.gameObject);
         }
     }
+
     public void SetDistance(float distance)
     {
         _distance = distance;
     }
+
+    public void StopThrow()
+    {
+        Debug.Log("Stop throw");
+        _distance = 0; 
+    }
+
 }
