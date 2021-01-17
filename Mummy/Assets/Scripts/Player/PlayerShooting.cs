@@ -91,7 +91,7 @@ public class PlayerShooting : MonoBehaviour
         toiletPaper.transform.position = target.transform.position;
         toiletPaper.GetComponent<MummyPaper>().SetDistance(Vector3.Distance(transform.position, target.transform.position));
         toiletPaper.gameObject.SetActive(true);
-        target.GetComponent<Rigidbody2D>().mass = 10000;
+        //target.GetComponent<Rigidbody2D>().mass = 10000;
         springJoint.enabled = false;
         target = null;
     }
@@ -139,13 +139,10 @@ public class PlayerShooting : MonoBehaviour
     {
         toiletLine.positionCount = numberOfNodes;
         gameObject.GetComponent<Rigidbody2D>().AddForce(transform.up * jumpOnSwingForce,ForceMode2D.Impulse);
-        //GameObject hook = new GameObject();
-        //hook.transform.position = target.transform.position;
         for (int i=0; i < numberOfNodes; i++)
         {
             jointNodes[i] = Instantiate(Resources.Load("Nodes/NodeJoint")) as GameObject;
-            jointNodes[i].transform.position = target.transform.position;// (target.transform.position + transform.position) * (i + 1) / numberOfNodes;
-            //jointNodes[i].transform.SetParent(hook.transform); 
+            jointNodes[i].transform.position = target.transform.position;
             toiletLine.SetPosition(i, jointNodes[i].transform.position);
         }
         jointNodes[0].GetComponent<DistanceJoint2D>().connectedBody = target.GetComponent<Rigidbody2D>();

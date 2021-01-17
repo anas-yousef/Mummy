@@ -480,7 +480,7 @@ Transform:
   m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &249484376
 GameObject:
@@ -2257,7 +2257,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1564766367, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}
       propertyPath: swingingForce
-      value: 1
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 2118273134075098176, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}
       propertyPath: speed

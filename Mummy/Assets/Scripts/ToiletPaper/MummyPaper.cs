@@ -73,7 +73,7 @@ public class MummyPaper : MonoBehaviour
         if (collision.gameObject.tag == "DraggableBox" && !_hit)
         {
             _hit = true;
-            collision.gameObject.GetComponent<Rigidbody2D>().mass = 1;
+            //collision.gameObject.GetComponent<Rigidbody2D>().mass = 1;
             playerScript.DraggableBoxHit(collision.gameObject);
         }
         if (collision.gameObject.layer == 10 && !_hit)
