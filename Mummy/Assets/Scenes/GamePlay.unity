@@ -3795,6 +3795,14 @@ PrefabInstance:
       propertyPath: m_Parameters.colorGradient.m_NumColorKeys
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2118273134968589180, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}
+      propertyPath: m_Parameters.widthMultiplier
+      value: 0.4072194
+      objectReference: {fileID: 0}
+    - target: {fileID: 2118273134968589180, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}
+      propertyPath: m_Parameters.alignment
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2118273134968589181, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}
       propertyPath: gm
       value: 
