@@ -120,6 +120,8 @@ public class GameManager : MonoBehaviour
         // relocate the player
         Transform trans = _curLevelMap.transform;
         _curStartLocation = trans.Find("Player Start Location");
+        //call restart player in player shooting
+        player.GetComponent<PlayerShooting>().RestartPlayer();
         player.transform.localPosition = new Vector3(_curStartLocation.position.x, _curStartLocation.position.y, 0);
         // TODO: stop the throw
         tp.StopThrow();

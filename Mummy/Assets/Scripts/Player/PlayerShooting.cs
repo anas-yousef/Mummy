@@ -171,7 +171,10 @@ public class PlayerShooting : MonoBehaviour
         distanceJoint.enabled = false;
         isSwingnig = false;
         playerMovement.SetIsSwinging(isSwingnig);
+        playerMovement.SetCanMove(true);
+        playerMovement.StopMovement();
         target = null;
         toiletPaper.gameObject.SetActive(false);
+        RemoveCollider();
     }
 }

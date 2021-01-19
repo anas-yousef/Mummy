@@ -104,7 +104,8 @@ public class MummyPaper : MonoBehaviour
         Debug.Log("Stop throw");
         transform.localPosition = Vector3.zero;
         _distance = 0;
-        _back = true;
+        _hit = false;
+        _back = false;
     }
 
 }
