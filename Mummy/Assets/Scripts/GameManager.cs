@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
     {
         
         // Goto options. 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !startPanel.activeSelf)
         {
             Time.timeScale = 0.0f;
             settingsPanel.SetActive(true);
