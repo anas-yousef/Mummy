@@ -3114,16 +3114,16 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2118273134968589180, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}
-<<<<<<< Updated upstream
-      propertyPath: m_Parameters.widthMultiplier
-      value: 0.4072194
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2118273134968589180, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}
       propertyPath: m_Parameters.alignment
-=======
-      propertyPath: m_Enabled
->>>>>>> Stashed changes
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2118273134968589180, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}
+      propertyPath: m_Parameters.widthMultiplier
+      value: 0.3899658
       objectReference: {fileID: 0}
     - target: {fileID: 2118273134968589181, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}
       propertyPath: gm
