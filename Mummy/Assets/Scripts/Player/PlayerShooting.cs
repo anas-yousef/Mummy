@@ -9,7 +9,6 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] private LineRenderer toiletLine;
     [SerializeField] private SpringJoint2D springJoint;
     [SerializeField] private DistanceJoint2D distanceJoint;
-    //[SerializeField] private HingeJoint2D hingeJoint;
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private float seconds;
     [SerializeField] private float jumpOnSwingForce = 60;
@@ -91,7 +90,6 @@ public class PlayerShooting : MonoBehaviour
         toiletPaper.transform.position = target.transform.position;
         toiletPaper.GetComponent<MummyPaper>().SetDistance(Vector3.Distance(transform.position, target.transform.position));
         toiletPaper.gameObject.SetActive(true);
-        //target.GetComponent<Rigidbody2D>().mass = 10000;
         springJoint.enabled = false;
         target = null;
     }
@@ -106,7 +104,6 @@ public class PlayerShooting : MonoBehaviour
         playerMovement.SetIsSwinging(isSwingnig);
         toiletPaper.gameObject.SetActive(true);
         distanceJoint.enabled = false;
-       // hingeJoint.enabled = false;
         RemoveCollider();
         target = null;
         springJoint.enabled = false;
@@ -132,7 +129,6 @@ public class PlayerShooting : MonoBehaviour
         toiletLine.enabled = true;
         AddColliderToLine();
         distanceJoint.enabled = true;
-        //hingeJoint.enabled = true;
         toiletPaper.gameObject.SetActive(false);
     }
     private void AddColliderToLine()
@@ -168,5 +164,14 @@ public class PlayerShooting : MonoBehaviour
     public void SetPaperMoving(bool isPaperMoving)
     {
         playerMovement.SetCanMove(!isPaperMoving);
+    }
+    public void RestartPlayer()
+    {
+        springJoint.enabled = false;
+        distanceJoint.enabled = false;
+        isSwingnig = false;
+        playerMovement.SetIsSwinging(isSwingnig);
+        target = null;
+        toiletPaper.gameObject.SetActive(false);
     }
 }

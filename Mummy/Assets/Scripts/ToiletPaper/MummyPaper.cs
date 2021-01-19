@@ -102,7 +102,9 @@ public class MummyPaper : MonoBehaviour
     public void StopThrow()
     {
         Debug.Log("Stop throw");
-        _distance = 0; 
+        transform.localPosition = Vector3.zero;
+        _distance = 0;
+        _back = true;
     }
 
 }
