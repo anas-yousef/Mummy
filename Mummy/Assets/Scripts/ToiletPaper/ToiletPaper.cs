@@ -44,4 +44,9 @@ public class ToiletPaper : MonoBehaviour
     {
         toiletPaper.gameObject.SetActive (false);
     }
+
+    public void StopThrow()
+    {
+        transform.localPosition = Vector3.zero;
+    }
 }
