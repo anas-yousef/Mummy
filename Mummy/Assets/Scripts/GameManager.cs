@@ -121,7 +121,7 @@ public class GameManager : MonoBehaviour
         _curStartLocation = trans.Find("Player Start Location");
         player.transform.localPosition = new Vector3(_curStartLocation.position.x, _curStartLocation.position.y, 0);
         // TODO: stop the throw
-        // tp.StopThrow();
+        tp.StopThrow();
 
     }
     
