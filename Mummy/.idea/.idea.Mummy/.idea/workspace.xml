@@ -21,6 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="63074ed4-08b3-40eb-b132-31e8200d0be7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Mummy/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Mummy/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GamePlay.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GamePlay.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -114,6 +115,7 @@
       <workItem from="1610712276208" duration="1754000" />
       <workItem from="1610895607584" duration="3953000" />
       <workItem from="1611052459063" duration="204000" />
+      <workItem from="1611053248429" duration="70000" />
     </task>
     <servers />
   </component>
