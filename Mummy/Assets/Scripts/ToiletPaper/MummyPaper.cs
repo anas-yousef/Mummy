@@ -108,4 +108,9 @@ public class MummyPaper : MonoBehaviour
         _back = false;
     }
 
+    public void SendBack()
+    {
+        _back = true;
+    }
+
 }

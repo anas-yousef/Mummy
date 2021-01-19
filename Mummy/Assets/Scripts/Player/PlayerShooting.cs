@@ -45,6 +45,10 @@ public class PlayerShooting : MonoBehaviour
             toiletPaper.Throw();
             toiletPaper.gameObject.SetActive(true);
         }
+        else if(Input.GetButtonDown("Fire1") && toiletPaper.gameObject.activeSelf)
+        {
+            toiletPaper.SendBack();
+        }
         if (target != null && isSwingnig)
         {
             toiletLine.positionCount = numberOfNodes+1;
