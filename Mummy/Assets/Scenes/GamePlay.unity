@@ -2945,6 +2945,14 @@ PrefabInstance:
       propertyPath: speed
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 2118273134075098176, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}
+      propertyPath: distance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2118273134075098176, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}
+      propertyPath: layerToSwing.m_Bits
+      value: 1024
+      objectReference: {fileID: 0}
     - target: {fileID: 2118273134075098178, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -2983,7 +2991,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2118273134968589122, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}
       propertyPath: NodesFactor
-      value: 0.1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2118273134968589122, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}
       propertyPath: distanceFromLastNode
