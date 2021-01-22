@@ -17,7 +17,8 @@ public class GameManager : MonoBehaviour
     [Header("Panels")] 
     public GameObject startPanel;
     public GameObject settingsPanel;
-    public GameObject[] levelFinishedPanel = new GameObject[3];
+    public GameObject winPanel;
+
 
     private int _curLevel;
     private GameObject _curLevelMap;
@@ -34,8 +35,7 @@ public class GameManager : MonoBehaviour
     {
         
         // Goto options. 
-        if (Input.GetKeyDown(KeyCode.Escape) && !startPanel.activeSelf && !levelFinishedPanel[0].activeSelf
-            && !levelFinishedPanel[1].activeSelf && !levelFinishedPanel[2].activeSelf)
+        if (Input.GetKeyDown(KeyCode.Escape) && !startPanel.activeSelf)
         {
             Time.timeScale = 0.0f;
             settingsPanel.SetActive(true);
@@ -74,14 +74,11 @@ public class GameManager : MonoBehaviour
      * After finishing a level- move to the next one!
      * if there are no more levels- move to Win screen
      */
-    public void FinishLevel()
+    public void SwitchLevel()
     {
         // Destroy current level.
         Destroy(_curLevelMap);
         
-        // show next level panel 
-        levelFinishedPanel[_curLevel].SetActive(true);
-
         if (_curLevel + 1 < levels.Length)
         {
             _curLevel += 1;
@@ -94,12 +91,11 @@ public class GameManager : MonoBehaviour
             
             player.transform.localPosition = new Vector3(_curStartLocation.position.x, _curStartLocation.position.y, 0);
         }
-    }
-
-    public void StartNewLevel()
-    {
-        // show next level panel 
-        levelFinishedPanel[_curLevel - 1].SetActive(false);
+        else
+        {
+            Debug.Log("need to win");
+            winPanel.SetActive(true);
+        }
     }
 
     /**
@@ -141,7 +137,6 @@ public class GameManager : MonoBehaviour
 
         // Manage panels.
         settingsPanel.SetActive(false);
-        levelFinishedPanel[_curLevel].SetActive(false);
         startPanel.SetActive(true);
 
         // Back to start settings. 

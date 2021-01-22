@@ -198,7 +198,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Debug.Log("need to finish level");
 
-            gm.FinishLevel();
+            gm.SwitchLevel();
         }
     }
 
