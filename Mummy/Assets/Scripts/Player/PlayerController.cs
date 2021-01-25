@@ -183,7 +183,7 @@ private bool CheckIsGrounded()
     {
         if (other.gameObject.tag.Equals("Exit"))
         {
-            gm.FinishLevel();
+            gm.SwitchLevel();
         }
     }
 

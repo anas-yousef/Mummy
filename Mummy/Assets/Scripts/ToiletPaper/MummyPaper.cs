@@ -13,6 +13,7 @@ public class MummyPaper : MonoBehaviour
     private bool _back; // is it coming back
     private bool _hit; //can get hit
     private Vector3 positionTrack;
+    [SerializeField] LayerMask layerToSwing;
 
 
     public void Throw()
@@ -77,21 +78,20 @@ public class MummyPaper : MonoBehaviour
         if (collision.gameObject.tag == "DraggableBox" && !_hit)
         {
             _hit = true;
-            //collision.gameObject.GetComponent<Rigidbody2D>().mass = 1;
             playerScript.DraggableBoxHit(collision.gameObject);
         }
 
-        if (collision.gameObject.layer == 10 && !_hit)
+        if ( (((layerToSwing.value & 1 << collision.gameObject.layer) != 0) || (collision.gameObject.tag == "SwingBox") )&& !_hit)
         {
             _hit = true;
-            playerScript.WallHit(collision.gameObject);
+            playerScript.SwingBoxHit(transform.position);
         }
 
-        if (collision.gameObject.tag == "SwingBox" && !_hit)
+        /*if (collision.gameObject.tag == "SwingBox" && !_hit)
         {
             _hit = true;
-            playerScript.SwingBoxHit(collision.gameObject);
-        }
+            playerScript.SwingBoxHit(collision.gameObject.transform.position);
+        }*/
     }
 
     public void SetDistance(float distance)
@@ -106,6 +106,11 @@ public class MummyPaper : MonoBehaviour
         _distance = 0;
         _hit = false;
         _back = false;
+    }
+
+    public void SendBack()
+    {
+        _back = true;
     }
 
 }

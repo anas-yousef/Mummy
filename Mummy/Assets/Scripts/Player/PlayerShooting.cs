@@ -16,6 +16,7 @@ public class PlayerShooting : MonoBehaviour
     private int numberOfNodes;
     private Vector3 positionBeforeSwing;
     private GameObject target;
+    private Vector3 swingPoint=Vector3.zero;
     GameObject[] jointNodes;
     private bool isSwingnig;
 
@@ -45,16 +46,29 @@ public class PlayerShooting : MonoBehaviour
             toiletPaper.Throw();
             toiletPaper.gameObject.SetActive(true);
         }
+        else if(Input.GetButtonDown("Fire1") && toiletPaper.gameObject.activeSelf)
+        {
+            toiletPaper.SendBack();
+        }
+        if (Input.GetButtonDown("Fire1") && isSwingnig)
+        {
+            SwingBoxReleasePoint();
+        }
+        AssignLineToPoint();
+    }
+
+    private void AssignLineToTarget()
+    {
         if (target != null && isSwingnig)
         {
-            toiletLine.positionCount = numberOfNodes+1;
-            for(int i = 0; i < numberOfNodes; i++)
+            toiletLine.positionCount = numberOfNodes + 2;
+            for (int i = 0; i < numberOfNodes; i++)
             {
                 toiletLine.SetPosition(i, jointNodes[i].transform.position);
             }
             toiletLine.SetPosition(numberOfNodes, transform.position);
         }
-        else if(target != null && !isSwingnig)
+        else if (target != null && !isSwingnig)
         {
             toiletLine.positionCount = 2;
             toiletLine.SetPosition(0, transform.position);
@@ -66,12 +80,28 @@ public class PlayerShooting : MonoBehaviour
             toiletLine.SetPosition(0, transform.position);
             toiletLine.SetPosition(1, toiletPaper.transform.position);
         }
-        if (Input.GetButtonDown("Fire1") && isSwingnig)
-        {
-            SwingBoxRelease();
-        }
-
     }
+    private void AssignLineToPoint()
+    {
+        if (swingPoint != Vector3.zero && isSwingnig)
+        {
+            toiletLine.positionCount = numberOfNodes + 1;
+            toiletLine.SetPosition(0, swingPoint);
+            for (int i = 0; i < numberOfNodes; i++)
+            {
+                toiletLine.SetPosition(i+1, jointNodes[i].transform.position);
+            }
+            toiletLine.SetPosition(numberOfNodes, transform.position);
+        }
+        else
+        {
+            toiletLine.positionCount = 2;
+            toiletLine.SetPosition(0, transform.position);
+            toiletLine.SetPosition(1, toiletPaper.transform.position);
+        }
+    }
+
+
     private IEnumerator ReleaseAfterSeconds(CollidedObject collidedObject)
     {
         yield return new WaitForSeconds(seconds);
@@ -81,7 +111,7 @@ public class PlayerShooting : MonoBehaviour
         }
         if (collidedObject.Equals(CollidedObject.Floor))
         {
-            ReleaseFloor();
+            Release();
         }
 
     }
@@ -93,7 +123,7 @@ public class PlayerShooting : MonoBehaviour
         springJoint.enabled = false;
         target = null;
     }
-    public void ReleaseFloor()
+    public void Release()
     {
         toiletPaper.gameObject.SetActive(true);
     }
@@ -106,6 +136,17 @@ public class PlayerShooting : MonoBehaviour
         distanceJoint.enabled = false;
         RemoveCollider();
         target = null;
+        springJoint.enabled = false;
+    }
+    public void SwingBoxReleasePoint()
+    {
+        toiletPaper.transform.position = swingPoint;
+        isSwingnig = false;
+        playerMovement.SetIsSwinging(isSwingnig);
+        toiletPaper.gameObject.SetActive(true);
+        distanceJoint.enabled = false;
+        RemoveCollider();
+        swingPoint = Vector3.zero;
         springJoint.enabled = false;
     }
     public void DraggableBoxHit(GameObject hit)
@@ -127,11 +168,33 @@ public class PlayerShooting : MonoBehaviour
         numberOfNodes = (int)(Vector3.Distance(target.transform.position, transform.position)* NodesFactor);
         jointNodes = new GameObject[numberOfNodes];
         toiletLine.enabled = true;
-        AddColliderToLine();
+        AddNodesToObject();
         distanceJoint.enabled = true;
         toiletPaper.gameObject.SetActive(false);
     }
-    private void AddColliderToLine()
+    public void SwingBoxHit(Vector3 hitPoint)
+    {
+        numberOfNodes = (int)(Vector3.Distance(hitPoint, transform.position) * NodesFactor);
+        if (numberOfNodes > 0)
+        {
+            positionBeforeSwing = transform.position;
+            isSwingnig = true;
+            playerMovement.SetIsSwinging(isSwingnig);
+            swingPoint = hitPoint;
+            jointNodes = new GameObject[numberOfNodes];
+            toiletLine.enabled = true;
+            AddNodesToPoint();
+            distanceJoint.enabled = true;
+            toiletPaper.gameObject.SetActive(false);
+        }
+        else
+        {
+            toiletPaper.gameObject.SetActive(false);
+            Release();
+        }
+
+    }
+    private void AddNodesToObject()
     {
         toiletLine.positionCount = numberOfNodes;
         gameObject.GetComponent<Rigidbody2D>().AddForce(transform.up * jumpOnSwingForce,ForceMode2D.Impulse);
@@ -147,10 +210,28 @@ public class PlayerShooting : MonoBehaviour
                 jointNodes[i].GetComponent<DistanceJoint2D>().connectedBody = jointNodes[i - 1].GetComponent<Rigidbody2D>();
         }
         gameObject.GetComponent<DistanceJoint2D>().connectedBody = jointNodes[numberOfNodes - 1].GetComponent<Rigidbody2D>();
+    }
 
+    private void AddNodesToPoint()
+    {
+        toiletLine.positionCount = numberOfNodes;
+        gameObject.GetComponent<Rigidbody2D>().AddForce(transform.up * jumpOnSwingForce, ForceMode2D.Impulse);
+        for (int i = 0; i < numberOfNodes; i++)
+        {
+            jointNodes[i] = Instantiate(Resources.Load("Nodes/NodeJoint")) as GameObject;
+            jointNodes[i].transform.position = swingPoint;
+            toiletLine.SetPosition(i, jointNodes[i].transform.position);
+        }
+        jointNodes[0].GetComponent<DistanceJoint2D>().connectedAnchor = swingPoint;
+        for (int i = 1; i < numberOfNodes; i++)
+        {
+            jointNodes[i].GetComponent<DistanceJoint2D>().connectedBody = jointNodes[i - 1].GetComponent<Rigidbody2D>();
+        }
+        gameObject.GetComponent<DistanceJoint2D>().connectedBody = jointNodes[numberOfNodes - 1].GetComponent<Rigidbody2D>();
     }
     public void RemoveCollider()
     {
+        
         for(int i = 0; i < numberOfNodes; i++)
         {
             Destroy(jointNodes[i]);
@@ -159,7 +240,7 @@ public class PlayerShooting : MonoBehaviour
     public void WallHit(GameObject hit)
     {
         toiletPaper.gameObject.SetActive(false);
-        ReleaseFloor();
+        Release();
     }
     public void SetPaperMoving(bool isPaperMoving)
     {
