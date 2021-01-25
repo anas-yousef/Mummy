@@ -59,6 +59,7 @@ public class MusicControl : MonoBehaviour
             spriteState.selectedSprite = muteEffectSprite;
             spriteState.disabledSprite = muteEffectSprite;
         }
+        
         muteButton.spriteState = spriteState;
 
     }
