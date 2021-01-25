@@ -31,6 +31,8 @@ public class PlayerMovement : MonoBehaviour
     private bool canMove;
     private bool pressJump;
     private bool isSwingnig;
+    private bool movingLeft;
+    private bool movingRight;
     private Vector3 m_Velocity = Vector3.zero;
     [Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;
 
@@ -41,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Awake()
     {
-        speed = 5f;
+        speed = 20f;
         isGrounded = true;
         isJumping = false;
         isFalling = false;
@@ -57,39 +59,59 @@ public class PlayerMovement : MonoBehaviour
         horizontalMovePhysics = Input.GetAxisRaw("Horizontal");
         CheckIsGrounded();
 
-        if (Input.GetKey(KeyCode.LeftArrow) && canMove)
-        {
-            // Debug.Log(canMove);
-            isMoving = true;
-            Vector3 newScale = transform.localScale;
-            if (newScale.x > 0)
-            {
-                newScale.x *= -1;
-                transform.localScale = newScale;
-            }
+        //if (Input.GetKey(KeyCode.LeftArrow) && canMove)
+        //{
+        //    // Debug.Log(canMove);
+        //    isMoving = true;
+        //    Vector3 newScale = transform.localScale;
+        //    if (newScale.x > 0)
+        //    {
+        //        newScale.x *= -1;
+        //        transform.localScale = newScale;
+        //    }
 
-            if (isMoving)
-            {
-                transform.position = new Vector3(transform.position.x + horizontalMove, transform.position.y, transform.position.z);
-            }
+        //    if (isMoving)
+        //    {
+        //        transform.position = new Vector3(transform.position.x + horizontalMove, transform.position.y, transform.position.z);
+        //    }
 
-        }
+        //}
 
-        if (Input.GetKey(KeyCode.RightArrow) && canMove)
-        {
-            isMoving = true;
-            Vector3 newScale = transform.localScale;
-            if (newScale.x < 0)
-            {
-                newScale.x *= -1;
-                transform.localScale = newScale;
-            }
-            if (isMoving)
-            {
-                transform.position = new Vector3(transform.position.x + horizontalMove, transform.position.y, transform.position.z);
-            }
+        //if (Input.GetKey(KeyCode.RightArrow) && canMove)
+        //{
+        //    isMoving = true;
+        //    Vector3 newScale = transform.localScale;
+        //    if (newScale.x < 0)
+        //    {
+        //        newScale.x *= -1;
+        //        transform.localScale = newScale;
+        //    }
+        //    if (isMoving)
+        //    {
+        //        transform.position = new Vector3(transform.position.x + horizontalMove, transform.position.y, transform.position.z);
+        //    }
 
-        }
+        //}
+
+        //if (Input.GetKey(KeyCode.LeftArrow) && canMove)
+        //{
+        //    movingLeft = true;
+        //}
+
+        //if (Input.GetKey(KeyCode.RightArrow) && canMove)
+        //{
+        //    movingRight = true;
+        //}
+
+        //if (Input.GetKeyUp(KeyCode.LeftArrow))
+        //{
+        //    movingLeft = false;
+        //}
+
+        //if (Input.GetKeyUp(KeyCode.RightArrow))
+        //{
+        //    movingRight = false;
+        //}
 
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
 
@@ -139,6 +161,44 @@ public class PlayerMovement : MonoBehaviour
             rigidbody2d.AddRelativeForce(Vector2.right * horizontalMovePhysics * swingingForce, ForceMode2D.Impulse);
             //rigidbody2d.AddForce(swingingDirection * horizontalMovePhysics * swingingForce, ForceMode2D.Impulse);
         }
+
+        if (horizontalMovePhysics < 0f && canMove)
+        {
+            // Debug.Log(canMove);
+            isMoving = true;
+            Vector3 newScale = transform.localScale;
+            if (newScale.x > 0)
+            {
+                newScale.x *= -1;
+                transform.localScale = newScale;
+            }
+
+            if (isMoving)
+            {
+                //transform.position = new Vector3(transform.position.x + horizontalMove * speed * Time.fixedDeltaTime, transform.position.y, transform.position.z);
+                Vector3 targetVelocity = new Vector2(speed * horizontalMovePhysics * Time.fixedDeltaTime * 10f, rigidbody2d.velocity.y);
+                rigidbody2d.velocity = Vector3.SmoothDamp(rigidbody2d.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
+                //rigidbody2d.AddForce();
+            }
+        }
+
+        if (horizontalMovePhysics > 0f && canMove)
+        {
+            isMoving = true;
+            Vector3 newScale = transform.localScale;
+            if (newScale.x < 0)
+            {
+                newScale.x *= -1;
+                transform.localScale = newScale;
+            }
+            if (isMoving)
+            {
+                //transform.position = new Vector3(transform.position.x + horizontalMove * speed * Time.fixedDeltaTime, transform.position.y, transform.position.z);
+                Vector3 targetVelocity = new Vector2(speed * horizontalMovePhysics * Time.fixedDeltaTime * 10f, rigidbody2d.velocity.y);
+                rigidbody2d.velocity = Vector3.SmoothDamp(rigidbody2d.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
+            }
+
+        }
     }
 
     private void CheckIsGrounded()
@@ -159,25 +219,6 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
         }
-        //Debug.DrawRay(boxCollider2d.bounds.center, Vector2.down * (boxCollider2d.bounds.extents.y + 0.1f), rayColor);
-        //return grounded;
-
-
-        //RaycastHit2D boxcastHit2d = Physics2D.BoxCast(boxCollider2d.bounds.center, boxCollider2d.bounds.size, 0f, Vector2.down, 0.1f, platformsLayerMask);
-        //RaycastHit2D raycastHit2d = Physics2D.Raycast(boxCollider2d.bounds.center, Vector2.down, boxCollider2d.bounds.extents.y + 0.1f, platformsLayerMask);
-        //Color rayColor;
-        //if (raycastHit2d.collider != null)
-        //{
-        //    rayColor = Color.green;
-        //}
-        //else
-        //{
-        //    rayColor = Color.red;
-        //}
-
-        //Debug.DrawRay(boxCollider2d.bounds.center, Vector2.down * (boxCollider2d.bounds.extents.y + 0.1f), rayColor);
-
-        //return boxcastHit2d.collider != null && raycastHit2d.collider != null;
     }
 
     private void OnTriggerExit2D(Collider2D other)
