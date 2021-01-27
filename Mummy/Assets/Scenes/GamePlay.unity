@@ -315,7 +315,7 @@ Transform:
   m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_Children: []
   m_Father: {fileID: 857553801}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &228019766
 GameObject:
@@ -475,16 +475,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 249484376}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.5, w: 0.8660254}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 342131052}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 60}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -25, y: -444}
+  m_AnchoredPosition: {x: -238, y: 113}
   m_SizeDelta: {x: 375, y: 224}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &249484378
@@ -1423,7 +1423,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &557571292
 GameObject:
@@ -14829,12 +14829,13 @@ Transform:
   m_Children:
   - {fileID: 2068174826}
   - {fileID: 1413482787}
+  - {fileID: 1722629428}
   - {fileID: 1290592833}
   - {fileID: 176654369}
   - {fileID: 1612499636}
   - {fileID: 621311207}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &925750569 stripped
 GameObject:
@@ -14980,16 +14981,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 973385687}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -0.5, w: 0.8660254}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 342131052}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -60}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -12, y: -203}
+  m_AnchoredPosition: {x: 209, y: 111}
   m_SizeDelta: {x: 399, y: 237}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &973385689
@@ -15337,7 +15338,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1126293351}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -15346,7 +15347,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -13, y: -326}
+  m_AnchoredPosition: {x: -36.5, y: -235.5}
   m_SizeDelta: {x: 400, y: 156}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1126293353
@@ -15724,7 +15725,7 @@ RectTransform:
   - {fileID: 557571293}
   - {fileID: 267638627}
   m_Father: {fileID: 857553801}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -15940,7 +15941,7 @@ Transform:
   m_Children:
   - {fileID: 638589713}
   m_Father: {fileID: 857553801}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1669659327
 GameObject:
@@ -16253,12 +16254,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1722629426}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_Father: {fileID: 857553801}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1747316349
 GameObject:
@@ -16445,7 +16446,7 @@ MonoBehaviour:
   tp: {fileID: 925750570}
   all: {fileID: 857553801}
   levels:
-  - {fileID: 4213572534650970829, guid: bc9c8413bf47a44abb00970361a795cd, type: 3}
+  - {fileID: 7189641359272715971, guid: c6b97b3a216614d86b85e9ed2ded7427, type: 3}
   - {fileID: 6272995574464049467, guid: 48f37b990cc9b4566964bb54a3a35bd7, type: 3}
   - {fileID: 1943429115750102791, guid: 293dbcda6f21747fdaee35020f06a518, type: 3}
   startPanel: {fileID: 2083757340}
@@ -16455,7 +16456,7 @@ MonoBehaviour:
   howToPanel: {fileID: 267638626}
   mainMenuFirstButton: {fileID: 1669659327}
   mainSettingsFirstButton: {fileID: 1043626156}
-  settingFirstButton: {fileID: 973385687}
+  settingFirstButton: {fileID: 1126293351}
   winFirstButton: {fileID: 491450802}
 --- !u!4 &1929230972
 Transform:

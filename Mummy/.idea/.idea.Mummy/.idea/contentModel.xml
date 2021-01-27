@@ -6,6 +6,7 @@
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
           <e p="AspectRatioScript.cs" t="Include" />
+          <e p="BackgroundScript.cs" t="Include" />
           <e p="DraggableBoxScript.cs" t="Include" />
           <e p="DraggableCheckPlayer.cs" t="Include" />
           <e p="GameManager.cs" t="Include" />

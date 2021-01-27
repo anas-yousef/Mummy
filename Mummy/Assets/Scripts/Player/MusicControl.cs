@@ -47,6 +47,8 @@ public class MusicControl : MonoBehaviour
         // change sprites of button. 
         if (isMuted)
         {
+            muteButton.image.sprite = unmuteSprite; // main sprite
+            // sprite state
             spriteState.highlightedSprite = unmuteEffectSprite;
             spriteState.pressedSprite = unmuteSprite;
             spriteState.selectedSprite = unmuteEffectSprite;
@@ -54,6 +56,8 @@ public class MusicControl : MonoBehaviour
         }
         else
         {
+            muteButton.image.sprite = muteSprite; // main sprite
+            // sprite state
             spriteState.highlightedSprite = muteEffectSprite;
             spriteState.pressedSprite = muteSprite;
             spriteState.selectedSprite = muteEffectSprite;

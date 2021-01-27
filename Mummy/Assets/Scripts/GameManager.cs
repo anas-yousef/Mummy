@@ -70,8 +70,13 @@ public class GameManager : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Escape) && !startPanel.activeSelf && !mainSettingsPanel.activeSelf &&
                  !howToPanel.activeSelf && !settingsPanel.activeSelf)
         {
+            // panels
             settingsPanel.SetActive(true);
+            
+            // stop game time and player movement
             Time.timeScale = 0.0f;
+            player.GetComponent<PlayerShooting>().enabled = false; 
+            player.GetComponent<PlayerMovement>().enabled = false; 
             
             // chose button marked on screen. 
             EventSystem.current.SetSelectedGameObject(null);
@@ -82,6 +87,7 @@ public class GameManager : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Escape) && settingsPanel.activeSelf && !mainSettingsPanel.activeSelf)
         {
             BackToLevel();
+            
         }
         
     }
@@ -104,8 +110,9 @@ public class GameManager : MonoBehaviour
         _curStartLocation = trans.Find("Player Start Location");
         player.transform.localPosition = new Vector3(_curStartLocation.position.x, _curStartLocation.position.y, -1);        
         
+        // enable player
         player.SetActive(true);
-
+        Time.timeScale = 1.0f;
         _mainMenu = false; 
     }
 
@@ -158,10 +165,14 @@ public class GameManager : MonoBehaviour
         // relocate the player
         Transform trans = _curLevelMap.transform;
         _curStartLocation = trans.Find("Player Start Location");
+        
         //call restart player in player shooting
         player.GetComponent<PlayerShooting>().RestartPlayer();
         player.transform.localPosition = new Vector3(_curStartLocation.position.x, _curStartLocation.position.y, -1);
-        // TODO: stop the throw
+        
+        // stop shotting
+        player.GetComponent<PlayerShooting>().enabled = true; 
+        player.GetComponent<PlayerMovement>().enabled = true;
         tp.StopThrow();
 
     }
@@ -171,18 +182,21 @@ public class GameManager : MonoBehaviour
      */
     public void BackToMainMenu()
     {
+        
         // Destrory current level. 
         Destroy(_curLevelMap);
-
-        // Start time.
-        Time.timeScale = 1.0f;
 
         // Manage panels.
         settingsPanel.SetActive(false);
         winPanel.SetActive(false);
         startPanel.SetActive(true);
 
-        // Back to start settings. 
+        // Reset Player. 
+        Time.timeScale = 1.0f;
+        player.GetComponent<PlayerMovement>().enabled = true;
+        player.GetComponent<PlayerShooting>().enabled = true;
+        player.GetComponent<PlayerShooting>().RestartPlayer();
+        tp.StopThrow();
         player.SetActive(false);
         _curLevel = 0;
         
@@ -190,7 +204,7 @@ public class GameManager : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(mainMenuFirstButton);
 
-        _mainMenu = true; 
+        _mainMenu = true;
     }
     
     /**
@@ -207,7 +221,11 @@ public class GameManager : MonoBehaviour
     public void BackToLevel()
     {
         settingsPanel.SetActive(false);
+        
+        // start game time and player movement
         Time.timeScale = 1.0f;
+        player.GetComponent<PlayerShooting>().enabled = true; 
+        player.GetComponent<PlayerMovement>().enabled = true; 
    
     }
     public void PressHowTo()
