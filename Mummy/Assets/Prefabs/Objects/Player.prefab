@@ -198,6 +198,9 @@ MonoBehaviour:
   playerPos: {fileID: 2118273134968589177}
   speed: 3
   distance: 8
+  layerToSwing:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &2118273134968589120
 GameObject:
   m_ObjectHideFlags: 0
@@ -232,7 +235,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2118273134968589120}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.19, y: -3.51, z: 0}
+  m_LocalPosition: {x: 6.19, y: -3.51, z: -1}
   m_LocalScale: {x: -0.2, y: 0.2, z: 0}
   m_Children:
   - {fileID: 2118273134075098179}
@@ -513,8 +516,6 @@ MonoBehaviour:
   distanceJoint: {fileID: 2118273134968589178}
   playerMovement: {fileID: 1564766367}
   seconds: 2
-  distanceFromLastNode: 0.2
-  pullingPlayerSpeed: 40
   jumpOnSwingForce: 60
   NodesFactor: 3
 --- !u!58 &1564766372
@@ -546,6 +547,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gm: {fileID: 0}
+  targetTransform: {x: 0, y: 0, z: 0}
+  swinging: {x: 0, y: 0}
   speed: 3
   animator: {fileID: 2118273134968589176}
   rigidbody2d: {fileID: 2118273134968589182}
@@ -554,6 +557,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   jumpForce: 100
+  downForce: 0
+  swingingForce: 0
   movementForce: 0
   m_GroundCheck: {fileID: 18886591}
   m_CeilingCheck: {fileID: 1344100469}

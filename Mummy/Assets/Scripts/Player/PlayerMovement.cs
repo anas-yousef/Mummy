@@ -154,7 +154,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Vector3 vectorDirection = targetTransform - transform.position;
             //Vector2 swingingDirection = new Vector2(vectorDirection.y, -vectorDirection.x);
-            
+
             Vector2 swingingDirection = new Vector2(vectorDirection.x, vectorDirection.y) + new Vector2(0, -downForce);
             //swingingDirection += new Vector2(0, -downForce);
             swinging = swingingDirection;
@@ -199,6 +199,11 @@ public class PlayerMovement : MonoBehaviour
             }
 
         }
+
+        /*if (horizontalMovePhysics == 0f)
+        {
+            rigidbody2d.velocity = Vector3.zero;
+        }*/
     }
 
     private void CheckIsGrounded()
