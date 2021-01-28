@@ -104,7 +104,7 @@ public class GameManager : MonoBehaviour
         
         // Locate the player
         _curStartLocation = trans.Find("Player Start Location");
-        player.transform.localPosition = new Vector3(_curStartLocation.position.x, _curStartLocation.position.y, 0);        
+        player.transform.localPosition = new Vector3(_curStartLocation.position.x, _curStartLocation.position.y, -1);        
         
         player.SetActive(true);
 
@@ -131,7 +131,7 @@ public class GameManager : MonoBehaviour
             trans.parent = all;
             _curStartLocation = trans.Find("Player Start Location");
             
-            player.transform.localPosition = new Vector3(_curStartLocation.position.x, _curStartLocation.position.y, 0);
+            player.transform.localPosition = new Vector3(_curStartLocation.position.x, _curStartLocation.position.y, -1);
         }
         else
         {
@@ -162,7 +162,7 @@ public class GameManager : MonoBehaviour
         _curStartLocation = trans.Find("Player Start Location");
         //call restart player in player shooting
         player.GetComponent<PlayerShooting>().RestartPlayer();
-        player.transform.localPosition = new Vector3(_curStartLocation.position.x, _curStartLocation.position.y, 0);
+        player.transform.localPosition = new Vector3(_curStartLocation.position.x, _curStartLocation.position.y, -1);
         // TODO: stop the throw
         tp.StopThrow();
 
