@@ -134,7 +134,7 @@ public class PlayerShooting : MonoBehaviour
         toiletPaper.GetComponent<MummyPaper>().SetDistance(Vector3.Distance(transform.position, target.transform.position));
         toiletPaper.gameObject.SetActive(true);
         distanceJoint.enabled = false;
-        //RemoveCollider();
+        RemoveCollider();
         target = null;
     }
 

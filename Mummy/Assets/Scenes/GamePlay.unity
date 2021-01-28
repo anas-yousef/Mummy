@@ -15472,7 +15472,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1175668840}
   - component: {fileID: 1175668841}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16922,7 +16922,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2118273134075098183, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}
       propertyPath: m_Layer
-      value: 9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2118273134968589120, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}
       propertyPath: m_Name
