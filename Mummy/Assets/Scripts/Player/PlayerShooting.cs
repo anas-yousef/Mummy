@@ -75,8 +75,11 @@ public class PlayerShooting : MonoBehaviour
 
     private void AssignLineToTarget()
     {
+
         if (target != null && isDragging)
         {
+            toiletLine.numCapVertices = numberOfNodes + 1;
+            toiletLine.numCornerVertices = numberOfNodes + 1;
             toiletLine.positionCount = numberOfNodes + 1;
             toiletLine.SetPosition(0, jointNodes[0].transform.position);
             for (int i = 1; i < numberOfNodes; i++)
@@ -90,6 +93,8 @@ public class PlayerShooting : MonoBehaviour
     {
         if (swingPoint != Vector3.zero && isSwingnig)
         {
+            toiletLine.numCapVertices = numberOfNodes + 1;
+            toiletLine.numCornerVertices = numberOfNodes + 1;
             toiletLine.positionCount = numberOfNodes + 1;
             toiletLine.SetPosition(0, swingPoint);
             for (int i = 0; i < numberOfNodes; i++)
@@ -100,6 +105,8 @@ public class PlayerShooting : MonoBehaviour
         }
         else
         {
+            toiletLine.numCapVertices = numberOfNodes + 1;
+            toiletLine.numCornerVertices = numberOfNodes + 1;
             toiletLine.positionCount = 2;
             toiletLine.SetPosition(0, transform.position);
             toiletLine.SetPosition(1, toiletPaper.transform.position);
@@ -289,4 +296,5 @@ public class PlayerShooting : MonoBehaviour
         toiletPaper.gameObject.SetActive(false);
         RemoveCollider();
     }
+
 }
