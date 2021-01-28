@@ -73,8 +73,7 @@ GameObject:
   - component: {fileID: 2118273134075098177}
   - component: {fileID: 2118273134075098236}
   - component: {fileID: 2118273134075098176}
-  - component: {fileID: 925750575}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Toilet Paper
   m_TagString: ToiletPaper
   m_Icon: {fileID: 0}
@@ -135,8 +134,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 0.5686275, g: 0.54901963, b: 0.5019608, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 423f746e0d21c9846975e533f33c5945, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -197,107 +196,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerScript: {fileID: 2118273134968589122}
   playerPos: {fileID: 2118273134968589177}
-  speed: 8
-  distance: 5
+  speed: 3
+  distance: 8
   layerToSwing:
     serializedVersion: 2
-    m_Bits: 1024
---- !u!82 &925750575
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2118273134075098183}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 8d6e822e471db4cb5b54d78c36144732, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_Bits: 0
 --- !u!1 &2118273134968589120
 GameObject:
   m_ObjectHideFlags: 0
@@ -315,10 +218,10 @@ GameObject:
   - component: {fileID: 2118273134968589121}
   - component: {fileID: 2118273134968589178}
   - component: {fileID: 2118273134968589122}
+  - component: {fileID: 1564766372}
   - component: {fileID: 1564766367}
-  - component: {fileID: 621311206}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Player-new
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -399,7 +302,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 14a5a9cbca9941e4cb53a7f9a9257583, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -423,7 +326,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 6
+  m_Mass: 10
   m_LinearDrag: 1
   m_AngularDrag: 0.05
   m_GravityScale: 3
@@ -451,7 +354,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 5e608f41e5126814dbfd4d5c5a259d0c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -471,13 +374,13 @@ LineRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Positions:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 1}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.3899658
+    widthMultiplier: 0.19802798
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -495,23 +398,23 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.58431375, g: 0.5294118, b: 0.47450984, a: 1}
-      key1: {r: 0.45882356, g: 0.43137258, b: 0.3647059, a: 1}
-      key2: {r: 0.45882356, g: 0.43137258, b: 0.3647059, a: 0}
+      key0: {r: 1, g: 1, b: 1, a: 1}
+      key1: {r: 1, g: 1, b: 1, a: 1}
+      key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
       key6: {r: 0, g: 0, b: 0, a: 0}
       key7: {r: 0, g: 0, b: 0, a: 0}
       ctime0: 0
-      ctime1: 60138
-      ctime2: 65535
+      ctime1: 65535
+      ctime2: 0
       ctime3: 0
       ctime4: 0
       ctime5: 0
       ctime6: 0
       ctime7: 0
-      atime0: 386
+      atime0: 0
       atime1: 65535
       atime2: 0
       atime3: 0
@@ -524,7 +427,7 @@ LineRenderer:
       m_NumAlphaKeys: 2
     numCornerVertices: 0
     numCapVertices: 0
-    alignment: 1
+    alignment: 0
     textureMode: 0
     shadowBias: 0.5
     generateLightingData: 0
@@ -539,7 +442,7 @@ SpringJoint2D:
   m_GameObject: {fileID: 2118273134968589120}
   m_Enabled: 0
   serializedVersion: 4
-  m_EnableCollision: 1
+  m_EnableCollision: 0
   m_ConnectedRigidBody: {fileID: 0}
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
@@ -547,9 +450,9 @@ SpringJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 0
-  m_Distance: 0.8
+  m_Distance: 1
   m_DampingRatio: 0
-  m_Frequency: 0.5
+  m_Frequency: 0.4
 --- !u!61 &2118273134968589121
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -593,7 +496,7 @@ DistanceJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 0
-  m_Distance: 0.5
+  m_Distance: 0.2
   m_MaxDistanceOnly: 0
 --- !u!114 &2118273134968589122
 MonoBehaviour:
@@ -612,9 +515,25 @@ MonoBehaviour:
   springJoint: {fileID: 2118273134968589123}
   distanceJoint: {fileID: 2118273134968589178}
   playerMovement: {fileID: 1564766367}
-  seconds: 0.5
-  jumpOnSwingForce: 50
-  NodesFactor: 2
+  seconds: 2
+  jumpOnSwingForce: 60
+  NodesFactor: 3
+--- !u!58 &1564766372
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2118273134968589120}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 2.880997
 --- !u!114 &1564766367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -637,9 +556,9 @@ MonoBehaviour:
   platformsLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  jumpForce: 60
+  jumpForce: 100
   downForce: 0
-  swingingForce: 0.3
+  swingingForce: 0
   movementForce: 0
   m_GroundCheck: {fileID: 18886591}
   m_CeilingCheck: {fileID: 1344100469}
@@ -660,19 +579,3 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!70 &621311206
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2118273134968589120}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.5}
-  m_Size: {x: 5.8, y: 5.2}
-  m_Direction: 1

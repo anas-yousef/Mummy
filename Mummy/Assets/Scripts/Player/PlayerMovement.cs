@@ -153,13 +153,10 @@ public class PlayerMovement : MonoBehaviour
         if (isSwingnig)
         {
             Vector3 vectorDirection = targetTransform - transform.position;
-            //Vector2 swingingDirection = new Vector2(vectorDirection.y, -vectorDirection.x);
             
             Vector2 swingingDirection = new Vector2(vectorDirection.x, vectorDirection.y) + new Vector2(0, -downForce);
-            //swingingDirection += new Vector2(0, -downForce);
             swinging = swingingDirection;
             rigidbody2d.AddRelativeForce(Vector2.right * horizontalMovePhysics * swingingForce, ForceMode2D.Impulse);
-            //rigidbody2d.AddForce(swingingDirection * horizontalMovePhysics * swingingForce, ForceMode2D.Impulse);
         }
 
         if (horizontalMovePhysics < 0f && canMove)
@@ -198,6 +195,11 @@ public class PlayerMovement : MonoBehaviour
                 rigidbody2d.velocity = Vector3.SmoothDamp(rigidbody2d.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
             }
 
+        }
+
+        if (horizontalMovePhysics == 0f && Mathf.Abs(rigidbody2d.velocity.x) != 0f && Mathf.Abs(rigidbody2d.velocity.y) < 0.1f)
+        {
+            rigidbody2d.velocity = Vector3.zero;
         }
     }
 
