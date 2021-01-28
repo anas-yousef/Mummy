@@ -12,7 +12,8 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private float seconds;
     [SerializeField] private float jumpOnSwingForce = 60;
-    [SerializeField] private float NodesFactor=4;
+    [SerializeField] private float NodesFactor = 4;
+    [SerializeField] private float DraggingNodesFactor = 5;
     private int numberOfNodes;
     private Vector3 positionBeforeSwing;
     private GameObject target;
@@ -129,7 +130,7 @@ public class PlayerShooting : MonoBehaviour
     }
     public void DraggableBoxReleaseWithCollider()
     {
-        toiletPaper.transform.position = jointNodes[0].transform.position;
+        toiletPaper.transform.position = target.transform.position;
         isDragging = false;
         toiletPaper.GetComponent<MummyPaper>().SetDistance(Vector3.Distance(transform.position, target.transform.position));
         toiletPaper.gameObject.SetActive(true);
@@ -180,7 +181,7 @@ public class PlayerShooting : MonoBehaviour
         hitPoint = DraghitPoint;
         toiletLine.enabled = true;
         distanceJoint.enabled = true;
-        numberOfNodes = (int)(Vector3.Distance(target.transform.position, transform.position) /0.25);
+        numberOfNodes = (int)(Vector3.Distance(target.transform.position, transform.position)*DraggingNodesFactor);
         toiletPaper.gameObject.SetActive(false);
         jointNodes = new GameObject[numberOfNodes];
         AddNodesToObject();
