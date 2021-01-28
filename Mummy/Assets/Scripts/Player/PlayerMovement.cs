@@ -153,7 +153,6 @@ public class PlayerMovement : MonoBehaviour
         if (isSwingnig)
         {
             Vector3 vectorDirection = targetTransform - transform.position;
-            
             Vector2 swingingDirection = new Vector2(vectorDirection.x, vectorDirection.y) + new Vector2(0, -downForce);
             swinging = swingingDirection;
             rigidbody2d.AddRelativeForce(Vector2.right * horizontalMovePhysics * swingingForce, ForceMode2D.Impulse);
