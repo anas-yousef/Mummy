@@ -16235,7 +16235,7 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4294967295
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
@@ -16446,7 +16446,7 @@ MonoBehaviour:
   tp: {fileID: 925750570}
   all: {fileID: 857553801}
   levels:
-  - {fileID: 7189641359272715971, guid: c6b97b3a216614d86b85e9ed2ded7427, type: 3}
+  - {fileID: 4213572534650970829, guid: 4844c382229d9bf4d8a8087370df313f, type: 3}
   - {fileID: 6272995574464049467, guid: 48f37b990cc9b4566964bb54a3a35bd7, type: 3}
   - {fileID: 1943429115750102791, guid: 293dbcda6f21747fdaee35020f06a518, type: 3}
   startPanel: {fileID: 2083757340}
@@ -16890,7 +16890,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2118273134075098176, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}
       propertyPath: distance
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2118273134075098176, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}
       propertyPath: layerToSwing.m_Bits
@@ -16912,6 +16912,14 @@ PrefabInstance:
       propertyPath: m_Color.b
       value: 0.5019608
       objectReference: {fileID: 0}
+    - target: {fileID: 2118273134075098179, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.43
+      objectReference: {fileID: 0}
+    - target: {fileID: 2118273134075098179, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.54
+      objectReference: {fileID: 0}
     - target: {fileID: 2118273134075098183, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}
       propertyPath: m_Layer
       value: 9
@@ -16920,13 +16928,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2118273134968589120, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2118273134968589122, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}
       propertyPath: pullingPlayerSpeed
       value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 2118273134968589122, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}
       propertyPath: jumpOnSwingForce
-      value: 50
+      value: 55
       objectReference: {fileID: 0}
     - target: {fileID: 2118273134968589122, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}
       propertyPath: seconds
@@ -16934,7 +16946,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2118273134968589122, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}
       propertyPath: NodesFactor
-      value: 2
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 2118273134968589122, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}
       propertyPath: distanceFromLastNode

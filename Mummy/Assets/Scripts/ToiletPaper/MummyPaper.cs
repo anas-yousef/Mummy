@@ -12,6 +12,7 @@ public class MummyPaper : MonoBehaviour
     private float _distance; // the distance it moves
     private bool _back; // is it coming back
     private bool _hit; //can get hit
+    private bool isDragging;
     private Vector3 positionTrack;
     [SerializeField] LayerMask layerToSwing;
 
@@ -52,15 +53,15 @@ public class MummyPaper : MonoBehaviour
             _hit = _distance > 0;
         }
 
-        if (_distance > 0)
+        /*if (_distance > 0 && !isDragging)
         {
             playerScript.SetPaperMoving(true);
         }
         else
         {
-
             playerScript.SetPaperMoving(false);
         }
+        Debug.Log(isDragging);*/
     }
 
     private void OnEnable()
@@ -77,8 +78,9 @@ public class MummyPaper : MonoBehaviour
     {
         if (collision.gameObject.tag == "DraggableBox" && !_hit)
         {
+            
             _hit = true;
-            playerScript.DraggableBoxHit(collision.gameObject);
+            playerScript.DraggableBoxHitWithCollider(collision.gameObject,transform.position);
         }
 
         if ( (((layerToSwing.value & 1 << collision.gameObject.layer) != 0) || (collision.gameObject.tag == "SwingBox") )&& !_hit)
@@ -111,6 +113,14 @@ public class MummyPaper : MonoBehaviour
     public void SendBack()
     {
         _back = true;
+    }
+    public void SetDragging(bool drag)
+    {
+        isDragging = drag;
+    }
+    public float getDistination()
+    {
+        return _distance;
     }
 
 }
