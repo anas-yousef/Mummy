@@ -30,7 +30,7 @@ public class MummyPaper : MonoBehaviour
         if (!_back)
         {
             positionTrack = transform.position;
-            transform.Translate(new Vector3(1, 1, 0) * travel);
+            transform.Translate(new Vector3(-1, 1, 0) * travel);
             _distance += Vector3.Distance(transform.position, positionTrack);
             _back = _distance >= distance || _hit;
         }

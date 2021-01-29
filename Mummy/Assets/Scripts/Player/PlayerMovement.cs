@@ -59,60 +59,6 @@ public class PlayerMovement : MonoBehaviour
         horizontalMovePhysics = Input.GetAxisRaw("Horizontal");
         CheckIsGrounded();
 
-        //if (Input.GetKey(KeyCode.LeftArrow) && canMove)
-        //{
-        //    // Debug.Log(canMove);
-        //    isMoving = true;
-        //    Vector3 newScale = transform.localScale;
-        //    if (newScale.x > 0)
-        //    {
-        //        newScale.x *= -1;
-        //        transform.localScale = newScale;
-        //    }
-
-        //    if (isMoving)
-        //    {
-        //        transform.position = new Vector3(transform.position.x + horizontalMove, transform.position.y, transform.position.z);
-        //    }
-
-        //}
-
-        //if (Input.GetKey(KeyCode.RightArrow) && canMove)
-        //{
-        //    isMoving = true;
-        //    Vector3 newScale = transform.localScale;
-        //    if (newScale.x < 0)
-        //    {
-        //        newScale.x *= -1;
-        //        transform.localScale = newScale;
-        //    }
-        //    if (isMoving)
-        //    {
-        //        transform.position = new Vector3(transform.position.x + horizontalMove, transform.position.y, transform.position.z);
-        //    }
-
-        //}
-
-        //if (Input.GetKey(KeyCode.LeftArrow) && canMove)
-        //{
-        //    movingLeft = true;
-        //}
-
-        //if (Input.GetKey(KeyCode.RightArrow) && canMove)
-        //{
-        //    movingRight = true;
-        //}
-
-        //if (Input.GetKeyUp(KeyCode.LeftArrow))
-        //{
-        //    movingLeft = false;
-        //}
-
-        //if (Input.GetKeyUp(KeyCode.RightArrow))
-        //{
-        //    movingRight = false;
-        //}
-
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
 
         if (isGrounded && Input.GetKeyDown(KeyCode.UpArrow) && canMove)
@@ -122,7 +68,8 @@ public class PlayerMovement : MonoBehaviour
             isFalling = false;
             animator.SetBool("IsJumping", isJumping);
             animator.SetBool("IsFalling", isFalling);
-           
+            animator.SetBool("IsSwinging", isSwingnig);
+
         }
 
         if (rigidbody2d.velocity.y < -0.1)
@@ -131,6 +78,7 @@ public class PlayerMovement : MonoBehaviour
             isFalling = true;
             animator.SetBool("IsFalling", isFalling);
             animator.SetBool("IsJumping", isJumping);
+            animator.SetBool("IsSwinging", isSwingnig);
         }
     }
 
@@ -140,6 +88,7 @@ public class PlayerMovement : MonoBehaviour
         isJumping = false;
         animator.SetBool("IsFalling", isFalling);
         animator.SetBool("IsJumping", isJumping);
+        animator.SetBool("IsSwinging", isSwingnig);
     }
 
     private void FixedUpdate()
@@ -152,18 +101,17 @@ public class PlayerMovement : MonoBehaviour
 
         if (isSwingnig)
         {
-            Vector3 vectorDirection = targetTransform - transform.position;
-            Vector2 swingingDirection = new Vector2(vectorDirection.x, vectorDirection.y) + new Vector2(0, -downForce);
-            swinging = swingingDirection;
+            //Vector3 vectorDirection = targetTransform - transform.position;
+            //Vector2 swingingDirection = new Vector2(vectorDirection.x, vectorDirection.y) + new Vector2(0, -downForce);
+            //swinging = swingingDirection;
             rigidbody2d.AddRelativeForce(Vector2.right * horizontalMovePhysics * swingingForce, ForceMode2D.Impulse);
         }
 
         if (horizontalMovePhysics < 0f && canMove)
         {
-            // Debug.Log(canMove);
             isMoving = true;
             Vector3 newScale = transform.localScale;
-            if (newScale.x > 0)
+            if (newScale.x < 0)
             {
                 newScale.x *= -1;
                 transform.localScale = newScale;
@@ -171,7 +119,6 @@ public class PlayerMovement : MonoBehaviour
 
             if (isMoving)
             {
-                //transform.position = new Vector3(transform.position.x + horizontalMove * speed * Time.fixedDeltaTime, transform.position.y, transform.position.z);
                 Vector3 targetVelocity = new Vector2(speed * horizontalMovePhysics * Time.fixedDeltaTime * 10f, rigidbody2d.velocity.y);
                 rigidbody2d.velocity = Vector3.SmoothDamp(rigidbody2d.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
                 //rigidbody2d.AddForce();
@@ -182,14 +129,13 @@ public class PlayerMovement : MonoBehaviour
         {
             isMoving = true;
             Vector3 newScale = transform.localScale;
-            if (newScale.x < 0)
+            if (newScale.x > 0)
             {
                 newScale.x *= -1;
                 transform.localScale = newScale;
             }
             if (isMoving)
             {
-                //transform.position = new Vector3(transform.position.x + horizontalMove * speed * Time.fixedDeltaTime, transform.position.y, transform.position.z);
                 Vector3 targetVelocity = new Vector2(speed * horizontalMovePhysics * Time.fixedDeltaTime * 10f, rigidbody2d.velocity.y);
                 rigidbody2d.velocity = Vector3.SmoothDamp(rigidbody2d.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
             }
@@ -221,6 +167,12 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void SwingAnimation()
+    {
+        animator.SetBool("IsSwinging", isSwingnig);
+
     }
 
     private void OnTriggerExit2D(Collider2D other)

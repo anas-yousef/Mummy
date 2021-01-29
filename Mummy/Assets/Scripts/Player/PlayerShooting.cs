@@ -155,6 +155,7 @@ public class PlayerShooting : MonoBehaviour
         toiletPaper.transform.position = target.transform.position;
         isSwingnig = false;
         playerMovement.SetIsSwinging(isSwingnig);
+        playerMovement.SwingAnimation(); // Added
         toiletPaper.gameObject.SetActive(true);
         distanceJoint.enabled = false;
         RemoveCollider();
@@ -166,6 +167,7 @@ public class PlayerShooting : MonoBehaviour
         toiletPaper.transform.position = swingPoint;
         isSwingnig = false;
         playerMovement.SetIsSwinging(isSwingnig);
+        playerMovement.SwingAnimation(); // Added
         toiletPaper.gameObject.SetActive(true);
         distanceJoint.enabled = false;
         RemoveCollider();
@@ -200,6 +202,7 @@ public class PlayerShooting : MonoBehaviour
         positionBeforeSwing = transform.position;
         isSwingnig = true;
         playerMovement.SetIsSwinging(isSwingnig);
+        playerMovement.SwingAnimation(); // Added
         target = hit;
         numberOfNodes = (int)(Vector3.Distance(target.transform.position, transform.position)* NodesFactor);
         jointNodes = new GameObject[numberOfNodes];
@@ -216,6 +219,7 @@ public class PlayerShooting : MonoBehaviour
             positionBeforeSwing = transform.position;
             isSwingnig = true;
             playerMovement.SetIsSwinging(isSwingnig);
+            playerMovement.SwingAnimation(); // Added
             swingPoint = hitPoint;
             jointNodes = new GameObject[numberOfNodes];
             toiletLine.enabled = true;
@@ -290,6 +294,7 @@ public class PlayerShooting : MonoBehaviour
         distanceJoint.enabled = false;
         isSwingnig = false;
         playerMovement.SetIsSwinging(isSwingnig);
+        playerMovement.SwingAnimation(); // Added
         playerMovement.SetCanMove(true);
         playerMovement.StopMovement();
         target = null;
