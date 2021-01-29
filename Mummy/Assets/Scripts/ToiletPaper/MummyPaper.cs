@@ -78,7 +78,6 @@ public class MummyPaper : MonoBehaviour
     {
         if (collision.gameObject.tag == "DraggableBox" && !_hit)
         {
-            
             _hit = true;
             playerScript.DraggableBoxHitWithCollider(collision.gameObject,transform.position);
         }
