@@ -100,7 +100,7 @@ public class GameManager : MonoBehaviour
         _curLevel = 0;
         _curLevelMap = Instantiate(levels[_curLevel]);
         Transform trans = _curLevelMap.transform;
-        trans.parent = all; 
+        // trans.parent = all; 
         
         // Locate the player
         _curStartLocation = trans.Find("Player Start Location");
@@ -125,10 +125,10 @@ public class GameManager : MonoBehaviour
             _curLevel += 1;
             // Get the next level.
             _curLevelMap = Instantiate(levels[_curLevel]);
+            Transform trans = _curLevelMap.transform;
+            // trans.parent = all; 
 
             // relocate the player
-            Transform trans = _curLevelMap.transform;
-            trans.parent = all;
             _curStartLocation = trans.Find("Player Start Location");
             
             player.transform.localPosition = new Vector3(_curStartLocation.position.x, _curStartLocation.position.y, -1);
@@ -175,6 +175,10 @@ public class GameManager : MonoBehaviour
     {
         // Destrory current level. 
         Destroy(_curLevelMap);
+        
+        //call restart player in player shooting
+        player.GetComponent<PlayerShooting>().RestartPlayer();
+        tp.StopThrow();
 
         // Start time.
         Time.timeScale = 1.0f;
