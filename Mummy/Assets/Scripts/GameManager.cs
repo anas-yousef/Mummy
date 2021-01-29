@@ -175,6 +175,10 @@ public class GameManager : MonoBehaviour
     {
         // Destrory current level. 
         Destroy(_curLevelMap);
+        
+        //call restart player in player shooting
+        player.GetComponent<PlayerShooting>().RestartPlayer();
+        tp.StopThrow();
 
         // Start time.
         Time.timeScale = 1.0f;
