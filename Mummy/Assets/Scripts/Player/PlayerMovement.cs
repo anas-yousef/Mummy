@@ -196,7 +196,7 @@ public class PlayerMovement : MonoBehaviour
 
         }
 
-        if (horizontalMovePhysics == 0f && Mathf.Abs(rigidbody2d.velocity.x) != 0f && Mathf.Abs(rigidbody2d.velocity.y) < 0.1f)
+        if (horizontalMovePhysics == 0f &&!isSwingnig && Mathf.Abs(rigidbody2d.velocity.x) != 0f && Mathf.Abs(rigidbody2d.velocity.y) < 0.1f)
         {
             rigidbody2d.velocity = Vector3.zero;
         }
