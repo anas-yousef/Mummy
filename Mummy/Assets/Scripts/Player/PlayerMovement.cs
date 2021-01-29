@@ -204,6 +204,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void CheckIsGrounded()
     {
+        // Check Why he jumps on rope
         Color rayColor;
         rayColor = Color.red;
         bool wasGrounded = isGrounded;
