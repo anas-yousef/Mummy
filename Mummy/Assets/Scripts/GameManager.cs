@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
     public GameObject mainMenuFirstButton, mainSettingsFirstButton, settingFirstButton, winFirstButton; 
 
 
-    private int _curLevel;
+    public int _curLevel;
     private GameObject _curLevelMap;
     private Transform _curStartLocation;
     private bool _mainMenu; 
@@ -160,10 +160,10 @@ public class GameManager : MonoBehaviour
         // relocate the player
         Transform trans = _curLevelMap.transform;
         _curStartLocation = trans.Find("Player Start Location");
+        player.transform.localPosition = new Vector3(_curStartLocation.position.x, _curStartLocation.position.y, -1);
+
         //call restart player in player shooting
         player.GetComponent<PlayerShooting>().RestartPlayer();
-        player.transform.localPosition = new Vector3(_curStartLocation.position.x, _curStartLocation.position.y, -1);
-        // TODO: stop the throw
         tp.StopThrow();
 
     }
