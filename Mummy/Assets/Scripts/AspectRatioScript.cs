@@ -7,7 +7,8 @@ public class AspectRatioScript : MonoBehaviour
 
     public float targetWidth = 1920;
     public float targetHeight = 1080;
-    public Camera camera; 
+    public Camera camera;
+    public Transform bg; 
     
     void Start()
     {
@@ -23,5 +24,7 @@ public class AspectRatioScript : MonoBehaviour
         {
             camera.orthographicSize = targetHeight / 200f;
         }
+        
+        bg.localScale = new Vector3(1, 1, 1);
     }
 }
