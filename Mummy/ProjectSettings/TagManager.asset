@@ -10,6 +10,7 @@ TagManager:
   - Exit
   - DraggableBox
   - SwingBox
+  - Box
   layers:
   - Default
   - TransparentFX
@@ -24,7 +25,7 @@ TagManager:
   - Floor
   - Nodes
   - Draggable
-  - 
+  - PlayerCheck
   - 
   - 
   - 
