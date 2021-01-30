@@ -160,6 +160,11 @@ public class PlayerMovement : MonoBehaviour
         {
             if (colliders[i].gameObject != gameObject)
             {
+                if (colliders[i].gameObject.name.Equals("PlayerCheck"))
+                {
+                    int x = 0;
+                }
+                //Debug.Log(colliders[i].gameObject.name);
                 isGrounded = true;
                 if (!wasGrounded || isFalling)
                 {
