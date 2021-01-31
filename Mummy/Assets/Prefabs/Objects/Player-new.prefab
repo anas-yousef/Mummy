@@ -294,6 +294,7 @@ MonoBehaviour:
   layerToSwing:
     serializedVersion: 2
     m_Bits: 1024
+  grabEffect: {fileID: 0}
 --- !u!1 &2118273134968589120
 GameObject:
   m_ObjectHideFlags: 0
