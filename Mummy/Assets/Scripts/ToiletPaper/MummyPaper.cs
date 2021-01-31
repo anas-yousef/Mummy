@@ -82,22 +82,16 @@ public class MummyPaper : MonoBehaviour
         {
             _hit = true;
             playerScript.DraggableBoxHitWithCollider(collision.gameObject,transform.position);
-            //grabEffect.SetActive(true);
             grabEffect.transform.position = transform.position;
             grabEffect.GetComponent<GrabEffectController>().StartAnimation();
-            
-            //Debug.Log("Hit");
         }
 
         if ( (((layerToSwing.value & 1 << collision.gameObject.layer) != 0) || (collision.gameObject.tag == "SwingBox") )&& !_hit)
         {
             _hit = true;
             playerScript.SwingBoxHit(transform.position);
-            //grabEffect.SetActive(true);
             grabEffect.transform.position = transform.position;
             grabEffect.GetComponent<GrabEffectController>().StartAnimation();
-            
-            //Debug.Log("Hit");
         }
 
         /*if (collision.gameObject.tag == "SwingBox" && !_hit)
