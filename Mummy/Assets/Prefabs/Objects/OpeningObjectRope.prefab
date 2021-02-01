@@ -12,9 +12,8 @@ GameObject:
   - component: {fileID: 5869804493519957538}
   - component: {fileID: 4921139252099059430}
   - component: {fileID: 5084936398329060052}
-  - component: {fileID: 4332824405501525564}
   m_Layer: 0
-  m_Name: OpeningObject
+  m_Name: OpeningObjectRope
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -119,7 +118,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4792612981297937886}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -132,18 +131,3 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &4332824405501525564
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4792612981297937886}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91573b5ff53f35e4695543f2dbbc56b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  firstBlockPosition: {fileID: 0}
-  secondBlockPosition: {fileID: 0}
-  openingObject: {fileID: 4792612981297937886}
