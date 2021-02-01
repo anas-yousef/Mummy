@@ -22,13 +22,5 @@ public class DrawRope : MonoBehaviour
             line.SetPosition(i+1, jointNodes[i].transform.position);
         }
         line.SetPosition(11, jointNodes[9].GetComponents<DistanceJoint2D>()[0].connectedAnchor);
-
-        for (int i = 0; i < jointNodes.Length; i++)
-        {
-            if (!line.GetPosition(i).Equals(jointNodes[i].transform.position))
-            {
-                Debug.Log("Bad");
-            }
-        }
     }
 }
