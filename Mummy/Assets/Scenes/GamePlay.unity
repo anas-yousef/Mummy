@@ -16274,7 +16274,7 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
@@ -16413,7 +16413,8 @@ MonoBehaviour:
   - {fileID: 7031986038944136613, guid: 43d9a12c93058074ba9ec21c7d880dd1, type: 3}
   - {fileID: 3631495913890653071, guid: 17f101f8f8d1965499f08e93d17752a2, type: 3}
   - {fileID: 3513782588996316941, guid: 6f4a3ec92651946378ff8837d9879c42, type: 3}
-  - {fileID: 3513782588996316941, guid: 6f4a3ec92651946378ff8837d9879c42, type: 3}
+  - {fileID: 4213572534650970829, guid: 4844c382229d9bf4d8a8087370df313f, type: 3}
+  - {fileID: 4213572534650970829, guid: b9954ec601935ab48a037e45310482e0, type: 3}
   startPanel: {fileID: 2083757340}
   settingsPanel: {fileID: 342131051}
   winPanel: {fileID: 631986612}
