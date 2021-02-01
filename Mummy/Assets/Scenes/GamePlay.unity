@@ -14970,11 +14970,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2118273134075098179, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}
   m_PrefabInstance: {fileID: 2118273134481522588}
   m_PrefabAsset: {fileID: 0}
---- !u!82 &925750572 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 925750575, guid: 89e92d9dce71b8647b215d752ed433ec, type: 3}
-  m_PrefabInstance: {fileID: 2118273134481522588}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &973385687
 GameObject:
   m_ObjectHideFlags: 0
@@ -16422,7 +16417,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -16518,7 +16513,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - {fileID: 1929230973}
-  - {fileID: 925750572}
+  - {fileID: 257143463}
   muteButton: {fileID: 1043626159}
   muteSprite: {fileID: 21300000, guid: daf038d9f39bb4a6495571fced4a0fcc, type: 3}
   muteEffectSprite: {fileID: 21300000, guid: b0d3105f26e5e411ca719cb959b6f360, type: 3}
