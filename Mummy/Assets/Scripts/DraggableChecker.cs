@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RopeController : MonoBehaviour
+public class DraggableChecker : MonoBehaviour
 {
-    //GameObject[] Boxes = new GameObject[];
-    [SerializeField]private List<GameObject> boxesOnRope;
     // Start is called before the first frame update
     void Start()
     {
