@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: -2085524354894589388}
   - component: {fileID: -2033913238307227411}
   - component: {fileID: 8460708777752619889}
+  - component: {fileID: 8956157950664453594}
   - component: {fileID: 3699801358121708510}
   m_Layer: 11
   m_Name: WreckingNode
@@ -122,6 +123,30 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!233 &8956157950664453594
+HingeJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2680196144296870276}
+  m_Enabled: 0
+  serializedVersion: 4
+  m_EnableCollision: 0
+  m_ConnectedRigidBody: {fileID: 0}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_AutoConfigureConnectedAnchor: 0
+  m_Anchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: 0, y: 0}
+  m_UseMotor: 0
+  m_Motor:
+    m_MotorSpeed: 0
+    m_MaximumMotorForce: 10000
+  m_UseLimits: 0
+  m_AngleLimits:
+    m_LowerAngle: 0
+    m_UpperAngle: 0
 --- !u!232 &3699801358121708510
 DistanceJoint2D:
   m_ObjectHideFlags: 0

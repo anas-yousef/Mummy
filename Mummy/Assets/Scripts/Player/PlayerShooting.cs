@@ -137,9 +137,14 @@ public class PlayerShooting : MonoBehaviour
     }
     public void DraggableBoxReleaseWithCollider()
     {
-        toiletPaper.transform.position = target.transform.position;
+        if (target != null)
+        {
+            toiletPaper.transform.position = target.transform.position;
+            toiletPaper.GetComponent<MummyPaper>().SetDistance(Vector3.Distance(transform.position, target.transform.position));
+        }
+    
         isDragging = false;
-        toiletPaper.GetComponent<MummyPaper>().SetDistance(Vector3.Distance(transform.position, target.transform.position));
+        
         toiletPaper.gameObject.SetActive(true);
         distanceJoint.enabled = false;
         RemoveCollider();

@@ -636,7 +636,7 @@ MonoBehaviour:
   boxCollider2d: {fileID: 2118273134968589121}
   platformsLayerMask:
     serializedVersion: 2
-    m_Bits: 5943
+    m_Bits: 71479
   jumpForce: 65
   downForce: 0
   swingingForce: 0.7
