@@ -202,6 +202,16 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag.Equals("WreckingBall"))
+        {
+            Debug.Log("Hit Ball");
+
+            gm.RestartLevel();
+        }
+    }
+
     public void StopMovement()
     {
         rigidbody2d.velocity = new Vector2(0, 0);

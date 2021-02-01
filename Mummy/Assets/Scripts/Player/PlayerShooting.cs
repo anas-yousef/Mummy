@@ -290,6 +290,7 @@ public class PlayerShooting : MonoBehaviour
     }
     public void RestartPlayer()
     {
+        toiletPaper.StopThrow();
         springJoint.enabled = false;
         distanceJoint.enabled = false;
         isSwingnig = false;

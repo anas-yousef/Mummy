@@ -11,6 +11,7 @@ TagManager:
   - DraggableBox
   - SwingBox
   - Box
+  - WreckingBall
   layers:
   - Default
   - TransparentFX
@@ -26,8 +27,8 @@ TagManager:
   - Nodes
   - Draggable
   - PlayerCheck
-  - 
-  - 
+  - WreckLayer
+  - Swingable
   - 
   - 
   - 

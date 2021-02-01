@@ -127,5 +127,9 @@ public class MummyPaper : MonoBehaviour
     {
         return _distance;
     }
+    public void IsBack()
+    {
+        _back = false;
+    }
 
 }
