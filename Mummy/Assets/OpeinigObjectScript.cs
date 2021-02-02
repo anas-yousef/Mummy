@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class OpeinigObjectScript : MonoBehaviour
 {
-    private Vector3 firstPos=new Vector3(-3.775977f,-4.437042f,0);
-    private Vector3 secondPos=new Vector3(4.247139f,-4.438741f,0);
+    private Vector3 firstPos=new Vector3(-3.05f, -4.472f, 0);
+    private Vector3 secondPos=new Vector3(3.45f, -4.472f, 0);
     [SerializeField] private Transform firstBlockPosition;
     [SerializeField] private Transform secondBlockPosition;
     public GameObject openingObject;
