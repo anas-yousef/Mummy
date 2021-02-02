@@ -32,7 +32,6 @@ public class BoulderController : MonoBehaviour
             {
                 motor.motorSpeed = -motor.motorSpeed + hitCounter;
             }
-            //motor.motorSpeed = -motor.motorSpeed - hitCounter;
             hingeJoint2D.motor = motor;
         }
     }
