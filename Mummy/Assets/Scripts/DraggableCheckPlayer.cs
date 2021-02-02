@@ -18,19 +18,41 @@ public class DraggableCheckPlayer : MonoBehaviour
 
     //}
 
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.tag == "Player")
+    //    {
+    //        parentRB.mass = parentMass;
+    //    }
+    //}
+
+    //private void OnTriggerExit2D(Collider2D collision)
+    //{
+    //    if (collision.tag == "Player")
+    //    {
+    //        parentRB.mass = 5f;
+    //    }
+    //}
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Player")
+        if (collision.gameObject.tag == "Player")
         {
-            parentRB.mass = parentMass;
+            parentRB.mass = 40;
         }
-    }
 
+    }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.tag == "Player")
+        if (collision.gameObject.tag == "Player")
         {
-            parentRB.mass = 5f;
+            parentRB.mass = 5;
+        }
+    }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            parentRB.mass = 40;
         }
     }
 }

@@ -12,6 +12,7 @@ TagManager:
   - SwingBox
   - Box
   - WreckingBall
+  - NodeRope
   layers:
   - Default
   - TransparentFX
@@ -30,8 +31,8 @@ TagManager:
   - WreckLayer
   - Swingable
   - RopeLayer
-  - 
-  - 
+  - WreckBall
+  - WreckNodes
   - 
   - 
   - 
