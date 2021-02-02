@@ -4,12 +4,18 @@
     <e p="$PROJECT_DIR$" t="IncludeRecursive">
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="DrawRope.cs" t="Include" />
+        <e p="OpeinigObjectScript.cs" t="Include" />
         <e p="Scripts" t="Include">
           <e p="AspectRatioScript.cs" t="Include" />
           <e p="BackgroundScript.cs" t="Include" />
+          <e p="BoulderController.cs" t="Include" />
           <e p="DraggableBoxScript.cs" t="Include" />
+          <e p="DraggableChecker.cs" t="Include" />
           <e p="DraggableCheckPlayer.cs" t="Include" />
+          <e p="DrawStraps.cs" t="Include" />
           <e p="GameManager.cs" t="Include" />
+          <e p="GrabEffectController.cs" t="Include" />
           <e p="Player" t="Include">
             <e p="MusicControl.cs" t="Include" />
             <e p="PlayerController.cs" t="Include" />
@@ -17,6 +23,8 @@
             <e p="PlayerShooting.cs" t="Include" />
             <e p="PlayerThrow.cs" t="Include" />
           </e>
+          <e p="RopeController.cs" t="Include" />
+          <e p="ShootingBall.cs" t="Include" />
           <e p="ToiletPaper" t="Include">
             <e p="MummyPaper.cs" t="Include" />
             <e p="ToiletPaper.cs" t="Include" />
