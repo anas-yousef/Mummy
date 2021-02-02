@@ -72,7 +72,7 @@ public class PlayerMovement : MonoBehaviour
 
         }
 
-        if (rigidbody2d.velocity.y < -0.9 && !isGrounded)
+        if (rigidbody2d.velocity.y < -0.9)
         {
             isJumping = false;
             isFalling = true;

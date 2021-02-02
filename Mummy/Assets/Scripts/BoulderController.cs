@@ -5,6 +5,7 @@ using UnityEngine;
 public class BoulderController : MonoBehaviour
 {
     [SerializeField] HingeJoint2D hingeJoint2D;
+    private int hitCounter = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,8 +22,17 @@ public class BoulderController : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("DraggableBox"))
         {
+            hitCounter += 40;
             JointMotor2D motor = hingeJoint2D.motor;
-            motor.motorSpeed = -motor.motorSpeed;
+            if (motor.motorSpeed < 0f)
+            {
+                motor.motorSpeed = -motor.motorSpeed - hitCounter;
+            }
+            if(motor.motorSpeed > 0f)
+            {
+                motor.motorSpeed = -motor.motorSpeed + hitCounter;
+            }
+            //motor.motorSpeed = -motor.motorSpeed - hitCounter;
             hingeJoint2D.motor = motor;
         }
     }
